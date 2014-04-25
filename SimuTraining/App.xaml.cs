@@ -20,14 +20,11 @@ namespace SimuTraining
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            SplashScreen sp = new SplashScreen("res/img/welcome.png");
-            sp.Show(true, true);
-            sp.Close(new TimeSpan(0, 0, 3));
-
-            //Window main = new MainWindow();
-            //main.ShowActivated = false;
+            
+            //SplashScreen sp = new SplashScreen("res/img/welcome.png");
+            //sp.Show(true, true);
+            //sp.Close(new TimeSpan(0, 0, 3));
             //Thread.Sleep(3000);
-            //main.Show();
 
             if (confirmAuthorization())
             {
