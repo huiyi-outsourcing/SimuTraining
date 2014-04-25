@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="util\AuthUtil.cs" />
     <Compile Include="util\SettingsHolder.cs" />
+    <Compile Include="util\VideoUtil.cs" />
     <Page Include="auth\AuthWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
