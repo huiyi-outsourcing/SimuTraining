@@ -1,0 +1,128 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Management;
+using System.Security.Cryptography;
+
+namespace SimuTraining.util
+{
+    public class AuthUtil
+    {
+        private AuthUtil() 
+        { 
+        }
+
+        public static String getMachineID()
+        {
+            String mid = "";
+            String info = getMacInfo() + getDiskID() + getCpuId();
+
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] source = System.Text.Encoding.UTF8.GetBytes(info);
+            byte[] target = md5provider.ComputeHash(source);
+
+            mid = Convert.ToBase64String(target).Substring(0, 20);
+            return mid;
+        }
+
+        public static String generateAuthrizationCode(String id)
+        {
+            MD5CryptoServiceProvider provider = new MD5CryptoServiceProvider();
+            byte[] source = System.Text.Encoding.UTF8.GetBytes(id);
+            byte[] target = provider.ComputeHash(source);
+
+            return Convert.ToBase64String(target).Substring(0, 10);
+        }
+
+        public static Boolean authorize(String id, String authcode)
+        {
+            String rightcode = generateAuthrizationCode(id);
+
+            return authcode.Equals(rightcode);
+        }
+
+        private static String getMacInfo() 
+        {
+            string mac = "";
+            ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            try
+            {
+                foreach (ManagementObject mo in moc)
+                {
+                    if ((bool)mo["IPEnabled"] == true)
+                    {
+                        mac = mo["MacAddress"].ToString();
+                        break;
+                    }
+                }
+
+                return mac;
+            }
+            catch
+            {
+                return "unknown";
+            }
+            finally
+            {
+                moc = null;
+                mc = null;
+            }
+        }
+
+        private static string getDiskID()
+        {
+            string diskid = "";
+            ManagementClass mc = new ManagementClass("Win32_DiskDrive");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            try
+            {
+                foreach (ManagementObject mo in moc)
+                {
+                    diskid = mo.Properties["Model"].Value.ToString();
+                }
+
+                return diskid;
+            }
+            catch
+            {
+                return "unknown";
+            }
+            finally
+            {
+                moc = null;
+                mc = null;
+            }
+        }
+
+        private static String getCpuId() 
+        {
+            string cpuInfo = "";
+            ManagementClass mc = new ManagementClass("Win32_Processor");
+            ManagementObjectCollection moc = mc.GetInstances();
+
+            try
+            {
+                foreach (ManagementObject mo in moc)
+                {
+                    cpuInfo = mo.Properties["ProcessorId"].Value.ToString();
+                }
+
+                return cpuInfo;
+            }
+            catch
+            {
+                return "unknown";
+            }
+            finally
+            {
+                moc = null;
+                mc = null;
+            }
+        }
+    }
+}

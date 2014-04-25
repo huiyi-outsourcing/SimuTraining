@@ -6,6 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows;
+using Microsoft.Win32;
+
+using SimuTraining.auth;
+using SimuTraining.util;
 
 namespace SimuTraining
 {
@@ -20,12 +24,38 @@ namespace SimuTraining
             sp.Show(true, true);
             sp.Close(new TimeSpan(0, 0, 3));
 
-            Window main = new MainWindow();
-            main.ShowActivated = false;
-            Thread.Sleep(3000);
-            main.Show();
+            //Window main = new MainWindow();
+            //main.ShowActivated = false;
+            //Thread.Sleep(3000);
+            //main.Show();
+
+            if (confirmAuthorization())
+            {
+                Window main = new MainWindow();
+                main.Show();
+            }
+            else
+            {
+                Window auth = new AuthWindow();
+                auth.Show();
+            }
 
             base.OnStartup(e);
+        }
+
+        private Boolean confirmAuthorization()
+        {
+            RegistryKey key = Registry.LocalMachine;
+            RegistryKey SimuTraining = key.OpenSubKey("SOFTWARE\\SimuTraining");
+            if (SimuTraining != null && SimuTraining.GetValue("authcode") != null)
+            {
+                String id = AuthUtil.getMachineID();
+                return AuthUtil.authorize(id, SimuTraining.GetValue("authcode").ToString());
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
