@@ -8,7 +8,7 @@ using System.Threading;
 using System.Windows;
 using Microsoft.Win32;
 
-using SimuTraining.auth;
+using SimuTraining.windows;
 using SimuTraining.util;
 
 namespace SimuTraining
@@ -28,8 +28,8 @@ namespace SimuTraining
 
             if (confirmAuthorization())
             {
-                Window main = new MainWindow();
-                main.Show();
+                Window login = new LoginWindow();
+                login.Show();
             }
             else
             {

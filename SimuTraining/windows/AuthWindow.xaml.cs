@@ -15,7 +15,7 @@ using Microsoft.Win32;
 
 using SimuTraining.util;
 
-namespace SimuTraining.auth
+namespace SimuTraining.windows
 {
     /// <summary>
     /// auth.xaml 的交互逻辑
