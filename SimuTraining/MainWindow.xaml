@@ -4,9 +4,29 @@
         Title="MainWindow" Height="752" Width="1280"
         WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Background>
-        <ImageBrush ImageSource="res/img/main_bg.png" />
+        <ImageBrush ImageSource="res/img/main_bg_second.png" />
     </Window.Background>
-    <Grid>
+    <Grid Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition />
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        
+        <!-- static layout -->
+        <Line X1="0" X2="1280" Y1="100" Y2="100" Stroke="Black" StrokeThickness="4" Grid.Row="0" />
+        <Line X1="0" X2="1280" Y1="0" Y2="0" Stroke="Black" StrokeThickness="4" Grid.Row="2" />
+
+        <Image Grid.Row="0" Source="res/img/head_title_second.png" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Name="mainPage" Click="mainPage_Click" Content="首页" Margin="20" />
+            <Button Name="return" Click="return_Click" Content="返回" />
+        </StackPanel>
+        <!-- end of static layout -->
+        
+        <Grid Grid.Row="1" Name="body"/>
+        
         
     </Grid>
 </Window>
