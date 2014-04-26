@@ -25,8 +25,17 @@
         </StackPanel>
         <!-- end of static layout -->
 
-        <Grid Grid.Row="1" Name="body">
-
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <StackPanel Name="breadcrumb" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                
+            </StackPanel>
+            
+            
 
         </Grid>
 

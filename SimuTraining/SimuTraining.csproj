@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="util\AuthUtil.cs" />
+    <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\SettingsHolder.cs" />
     <Compile Include="util\VideoUtil.cs" />
     <Compile Include="windows\LoginWindow.xaml.cs">
@@ -120,7 +121,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="conf\" />
     <Folder Include="media\" />
   </ItemGroup>
   <ItemGroup>
@@ -360,6 +360,11 @@
     <Resource Include="res\img\main_1.png" />
     <Resource Include="res\img\main_2.png" />
     <Resource Include="res\img\main_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="conf\Directory.xml">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
