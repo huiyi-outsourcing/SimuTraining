@@ -33,11 +33,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SimuTraining.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,8 +61,12 @@
     </ApplicationDefinition>
     <Compile Include="util\AuthUtil.cs" />
     <Compile Include="util\BreadCrumb.cs" />
+    <Compile Include="util\LayoutGenerator.cs" />
     <Compile Include="util\SettingsHolder.cs" />
     <Compile Include="util\VideoUtil.cs" />
+    <Compile Include="windows\IndexWindow.xaml.cs">
+      <DependentUpon>IndexWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -84,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="windows\IndexWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,250 +133,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="media\" />
+    <Folder Include="res\img\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="res\img\basic.png" />
-    <Resource Include="res\img\basic_1.png" />
-    <Resource Include="res\img\basic_1_1.png" />
-    <Resource Include="res\img\basic_1_2.png" />
-    <Resource Include="res\img\basic_1_2_1.png" />
-    <Resource Include="res\img\basic_1_2_2.png" />
-    <Resource Include="res\img\basic_1_3.png" />
-    <Resource Include="res\img\basic_1_4.png" />
-    <Resource Include="res\img\basic_1_5.png" />
-    <Resource Include="res\img\basic_1_6.png" />
-    <Resource Include="res\img\basic_2.png" />
-    <Resource Include="res\img\basic_2_1.png" />
-    <Resource Include="res\img\basic_2_1_1.png" />
-    <Resource Include="res\img\basic_2_1_2.png" />
-    <Resource Include="res\img\basic_2_1_3.png" />
-    <Resource Include="res\img\basic_2_1_4.png" />
-    <Resource Include="res\img\basic_2_1_5.png" />
-    <Resource Include="res\img\basic_2_1_6.png" />
-    <Resource Include="res\img\basic_2_1_7.png" />
-    <Resource Include="res\img\basic_2_1_8.png" />
-    <Resource Include="res\img\basic_2_1_9.png" />
-    <Resource Include="res\img\basic_2_2.png" />
-    <Resource Include="res\img\basic_2_2_1.png" />
-    <Resource Include="res\img\basic_2_2_2.png" />
-    <Resource Include="res\img\basic_2_2_3.png" />
-    <Resource Include="res\img\basic_2_2_4.png" />
-    <Resource Include="res\img\basic_2_3.png" />
-    <Resource Include="res\img\basic_2_3_1.png" />
-    <Resource Include="res\img\basic_2_3_2.png" />
-    <Resource Include="res\img\basic_2_3_3.png" />
-    <Resource Include="res\img\basic_2_3_3_1.png" />
-    <Resource Include="res\img\basic_2_3_3_2.png" />
-    <Resource Include="res\img\basic_2_3_3_3.png" />
-    <Resource Include="res\img\basic_2_3_3_4.png" />
-    <Resource Include="res\img\basic_2_3_3_5.png" />
-    <Resource Include="res\img\basic_2_3_3_6.png" />
-    <Resource Include="res\img\basic_2_3_3_7.png" />
-    <Resource Include="res\img\basic_2_3_3_8.png" />
-    <Resource Include="res\img\basic_2_3_3_9.png" />
-    <Resource Include="res\img\basic_2_3_4.png" />
-    <Resource Include="res\img\basic_2_3_5.png" />
-    <Resource Include="res\img\basic_2_3_5_1.png" />
-    <Resource Include="res\img\basic_2_3_5_2.png" />
-    <Resource Include="res\img\basic_2_3_5_3.png" />
-    <Resource Include="res\img\basic_2_3_5_4.png" />
-    <Resource Include="res\img\basic_2_3_5_5.png" />
-    <Resource Include="res\img\basic_2_3_6.png" />
-    <Resource Include="res\img\basic_2_3_7.png" />
-    <Resource Include="res\img\basic_2_4.png" />
-    <Resource Include="res\img\basic_2_4_1.png" />
-    <Resource Include="res\img\basic_2_4_1_1.png" />
-    <Resource Include="res\img\basic_2_4_1_2.png" />
-    <Resource Include="res\img\basic_2_4_1_2_1.png" />
-    <Resource Include="res\img\basic_2_4_1_2_2.png" />
-    <Resource Include="res\img\basic_2_4_1_2_3.png" />
-    <Resource Include="res\img\basic_2_4_1_2_4.png" />
-    <Resource Include="res\img\basic_2_4_1_2_5.png" />
-    <Resource Include="res\img\basic_2_4_1_2_6.png" />
-    <Resource Include="res\img\basic_2_4_1_2_7.png" />
-    <Resource Include="res\img\basic_2_4_1_3.png" />
-    <Resource Include="res\img\basic_2_4_1_3_1.png" />
-    <Resource Include="res\img\basic_2_4_1_3_2.png" />
-    <Resource Include="res\img\basic_2_4_1_3_3.png" />
-    <Resource Include="res\img\basic_2_4_1_4.png" />
-    <Resource Include="res\img\basic_2_4_1_4_1.png" />
-    <Resource Include="res\img\basic_2_4_1_4_2.png" />
-    <Resource Include="res\img\basic_2_4_1_4_3.png" />
-    <Resource Include="res\img\basic_2_4_1_5.png" />
-    <Resource Include="res\img\basic_2_4_1_5_1.png" />
-    <Resource Include="res\img\basic_2_4_1_5_2.png" />
-    <Resource Include="res\img\basic_2_4_1_6.png" />
-    <Resource Include="res\img\basic_2_4_1_6_1.png" />
-    <Resource Include="res\img\basic_2_4_1_6_2.png" />
-    <Resource Include="res\img\basic_2_4_1_6_3.png" />
-    <Resource Include="res\img\basic_2_4_1_6_4.png" />
-    <Resource Include="res\img\basic_2_4_1_7.png" />
-    <Resource Include="res\img\basic_2_4_1_7_1.png" />
-    <Resource Include="res\img\basic_2_4_1_7_2.png" />
-    <Resource Include="res\img\basic_2_4_1_8.png" />
-    <Resource Include="res\img\basic_2_4_1_8_1.png" />
-    <Resource Include="res\img\basic_2_4_1_8_2.png" />
-    <Resource Include="res\img\basic_2_4_1_8_3.png" />
-    <Resource Include="res\img\basic_2_4_1_9.png" />
-    <Resource Include="res\img\basic_2_4_2.png" />
-    <Resource Include="res\img\basic_2_4_2_1.png" />
-    <Resource Include="res\img\basic_2_4_2_2.png" />
-    <Resource Include="res\img\basic_2_4_2_2_1.png" />
-    <Resource Include="res\img\basic_2_4_2_2_10.png" />
-    <Resource Include="res\img\basic_2_4_2_2_2.png" />
-    <Resource Include="res\img\basic_2_4_2_2_3.png" />
-    <Resource Include="res\img\basic_2_4_2_2_4.png" />
-    <Resource Include="res\img\basic_2_4_2_2_5.png" />
-    <Resource Include="res\img\basic_2_4_2_2_6.png" />
-    <Resource Include="res\img\basic_2_4_2_2_7.png" />
-    <Resource Include="res\img\basic_2_4_2_2_8.png" />
-    <Resource Include="res\img\basic_2_4_2_2_9.png" />
-    <Resource Include="res\img\basic_2_4_2_3.png" />
-    <Resource Include="res\img\basic_2_5.png" />
-    <Resource Include="res\img\basic_2_5_1.png" />
-    <Resource Include="res\img\basic_2_5_1_1.png" />
-    <Resource Include="res\img\basic_2_5_1_2.png" />
-    <Resource Include="res\img\basic_2_5_2.png" />
-    <Resource Include="res\img\basic_2_5_2_1.png" />
-    <Resource Include="res\img\basic_2_5_2_2.png" />
-    <Resource Include="res\img\basic_2_5_3.png" />
-    <Resource Include="res\img\basic_2_5_3_1.png" />
-    <Resource Include="res\img\basic_2_5_3_2.png" />
-    <Resource Include="res\img\basic_2_5_4.png" />
-    <Resource Include="res\img\basic_2_5_4_1.png" />
-    <Resource Include="res\img\basic_2_5_4_2.png" />
-    <Resource Include="res\img\basic_2_5_5.png" />
-    <Resource Include="res\img\basic_2_5_5_1.png" />
-    <Resource Include="res\img\basic_2_5_5_2.png" />
-    <Resource Include="res\img\basic_2_6.png" />
-    <Resource Include="res\img\basic_2_6_1.png" />
-    <Resource Include="res\img\basic_2_6_1_1.png" />
-    <Resource Include="res\img\basic_2_6_1_2.png" />
-    <Resource Include="res\img\basic_2_6_1_3.png" />
-    <Resource Include="res\img\basic_2_6_1_4.png" />
-    <Resource Include="res\img\basic_2_6_1_5.png" />
-    <Resource Include="res\img\basic_2_6_1_6.png" />
-    <Resource Include="res\img\basic_2_6_1_7.png" />
-    <Resource Include="res\img\basic_2_6_2.png" />
-    <Resource Include="res\img\basic_2_6_2_1.png" />
-    <Resource Include="res\img\basic_2_6_2_2.png" />
-    <Resource Include="res\img\basic_2_6_2_3.png" />
-    <Resource Include="res\img\basic_2_6_2_4.png" />
-    <Resource Include="res\img\basic_2_6_2_5.png" />
-    <Resource Include="res\img\basic_2_6_3.png" />
-    <Resource Include="res\img\basic_2_6_3_1.png" />
-    <Resource Include="res\img\basic_2_6_3_2.png" />
-    <Resource Include="res\img\basic_2_6_3_3.png" />
-    <Resource Include="res\img\basic_2_6_3_4.png" />
-    <Resource Include="res\img\basic_2_6_3_5.png" />
-    <Resource Include="res\img\basic_2_7.png" />
-    <Resource Include="res\img\basic_2_7_1.png" />
-    <Resource Include="res\img\basic_2_7_2.png" />
-    <Resource Include="res\img\basic_2_8.png" />
-    <Resource Include="res\img\basic_2_9.png" />
-    <Resource Include="res\img\basic_2_9_1.png" />
-    <Resource Include="res\img\basic_2_9_1_1.png" />
-    <Resource Include="res\img\basic_2_9_1_2.png" />
-    <Resource Include="res\img\basic_2_9_1_3.png" />
-    <Resource Include="res\img\basic_2_9_2.png" />
-    <Resource Include="res\img\basic_2_9_2_1.png" />
-    <Resource Include="res\img\basic_2_9_2_2.png" />
-    <Resource Include="res\img\basic_2_9_2_3.png" />
-    <Resource Include="res\img\basic_2_9_2_4.png" />
-    <Resource Include="res\img\basic_2_9_2_5.png" />
-    <Resource Include="res\img\basic_2_9_3.png" />
-    <Resource Include="res\img\bg_button.png" />
-    <Resource Include="res\img\bg_input.png" />
-    <Resource Include="res\img\bg_video_button.png" />
-    <Resource Include="res\img\bg_video_end.png" />
-    <Resource Include="res\img\comp.png" />
-    <Resource Include="res\img\comp_1.png" />
-    <Resource Include="res\img\comp_1_1.png" />
-    <Resource Include="res\img\comp_1_10.png" />
-    <Resource Include="res\img\comp_1_2.png" />
-    <Resource Include="res\img\comp_1_3.png" />
-    <Resource Include="res\img\comp_1_4.png" />
-    <Resource Include="res\img\comp_1_5.png" />
-    <Resource Include="res\img\comp_1_6.png" />
-    <Resource Include="res\img\comp_1_7.png" />
-    <Resource Include="res\img\comp_1_8.png" />
-    <Resource Include="res\img\comp_1_9.png" />
-    <Resource Include="res\img\comp_2.png" />
-    <Resource Include="res\img\comp_2_1.png" />
-    <Resource Include="res\img\comp_2_1_1.png" />
-    <Resource Include="res\img\comp_2_1_2.png" />
-    <Resource Include="res\img\comp_2_2.png" />
-    <Resource Include="res\img\comp_2_2_1.png" />
-    <Resource Include="res\img\comp_2_2_2.png" />
-    <Resource Include="res\img\comp_2_3.png" />
-    <Resource Include="res\img\comp_2_3_1.png" />
-    <Resource Include="res\img\comp_2_3_2.png" />
-    <Resource Include="res\img\comp_3.png" />
-    <Resource Include="res\img\comp_3_1.png" />
-    <Resource Include="res\img\comp_3_2.png" />
-    <Resource Include="res\img\comp_3_3.png" />
-    <Resource Include="res\img\comp_4.png" />
-    <Resource Include="res\img\comp_4_1.png" />
-    <Resource Include="res\img\comp_4_10.png" />
-    <Resource Include="res\img\comp_4_11.png" />
-    <Resource Include="res\img\comp_4_1_1.png" />
-    <Resource Include="res\img\comp_4_1_2.png" />
-    <Resource Include="res\img\comp_4_1_3.png" />
-    <Resource Include="res\img\comp_4_2.png" />
-    <Resource Include="res\img\comp_4_3.png" />
-    <Resource Include="res\img\comp_4_4.png" />
-    <Resource Include="res\img\comp_4_5.png" />
-    <Resource Include="res\img\comp_4_6.png" />
-    <Resource Include="res\img\comp_4_7.png" />
-    <Resource Include="res\img\comp_4_8.png" />
-    <Resource Include="res\img\comp_4_9.png" />
-    <Resource Include="res\img\comp_4_9_1.png" />
-    <Resource Include="res\img\comp_4_9_2.png" />
-    <Resource Include="res\img\comp_5.png" />
-    <Resource Include="res\img\comp_5_1.png" />
-    <Resource Include="res\img\comp_5_1_1.png" />
-    <Resource Include="res\img\comp_5_1_2.png" />
-    <Resource Include="res\img\comp_5_2.png" />
-    <Resource Include="res\img\comp_5_3.png" />
-    <Resource Include="res\img\emerg.png" />
-    <Resource Include="res\img\exam.png" />
-    <Resource Include="res\img\head_title.png" />
-    <Resource Include="res\img\head_title_second.png" />
-    <Resource Include="res\img\home_grid_bg.png" />
-    <Resource Include="res\img\ic_launcher.png" />
-    <Resource Include="res\img\label_logo.png" />
-    <Resource Include="res\img\label_name.png" />
-    <Resource Include="res\img\label_title.png" />
-    <Resource Include="res\img\main_bg.png" />
-    <Resource Include="res\img\main_bg_second.png" />
-    <Resource Include="res\img\mental.png" />
-    <Resource Include="res\img\org.png" />
-    <Resource Include="res\img\org_1.png" />
-    <Resource Include="res\img\org_1_1.png" />
-    <Resource Include="res\img\org_1_2.png" />
-    <Resource Include="res\img\org_1_3.png" />
-    <Resource Include="res\img\org_1_4.png" />
-    <Resource Include="res\img\org_2.png" />
-    <Resource Include="res\img\org_2_1.png" />
-    <Resource Include="res\img\org_2_2.png" />
-    <Resource Include="res\img\org_2_3.png" />
-    <Resource Include="res\img\org_3.png" />
-    <Resource Include="res\img\org_3_1.png" />
-    <Resource Include="res\img\org_3_2.png" />
-    <Resource Include="res\img\org_3_3.png" />
-    <Resource Include="res\img\position_pre.png" />
-    <Resource Include="res\img\welcome.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="res\img\main_1.png" />
-    <Resource Include="res\img\main_2.png" />
-    <Resource Include="res\img\main_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="conf\Directory.xml">
+    <EmbeddedResource Include="conf\Directory.xml">
       <SubType>Designer</SubType>
-    </Resource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

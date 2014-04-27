@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Directory>
-    
+
+<Node name="首页" level="0" leaf="false">
     <Node name="组织指挥" level="1" leaf="false">
         <Node name="战（现）场急救的组织" level="2" leaf="false">
             <Node name="连、营抢救组的主要任务和救治原则" level="3" leaf="true"/>
             <Node name="分类" level="3" leaf="true"/>
             <Node name="后送" level="3" leaf="true"/>
-            <Node name="附、分类标识" level="3" leaf="true"/>
+            <Node name="分类标识" level="3" leaf="true"/>
+            <Node name="处置顺序" level="3" leaf="true" />
         </Node>
         
         <Node name="突发事件现场医疗救援的组织与实施" level="2" leaf="false">
-            <Node name="突发事件现场医疗救援概述" level="3" leaf="true"/>
             <Node name="现场救援工作的基本原则" level="3" leaf="true"/>
             <Node name="现场急救的实施" level="3" leaf="true"/>
         </Node>
@@ -19,20 +19,25 @@
             <Node name="现场救援主要机构、职责" level="3" leaf="true"/>
             <Node name="现场医疗救援区域设置" level="3" leaf="true"/>
             <Node name="现场（院前）评估" level="3" leaf="true"/>
+            <Node name="处置顺序及标识" level="3" leaf="true"/>
         </Node>
     </Node>
 
     <Node name="基本技术" level="1" leaf="false">
-        <Node name="伤员伤势评估、处置顺序" level="2" leaf="false">
+        <Node name="伤员伤势评估" level="2" leaf="false">
             <Node name="生命体征检查" level="3" leaf="true" />
-            <Node name="伤势评估参考标准（军、地）" level="3" leaf="fasle">
+            <Node name="伤势评估参考标准（军、地）" level="3" leaf="true">
+                <!--
                 <Node name="军队伤势评估参考标准" level="4" leaf="true" />
                 <Node name="地方伤势评估参考标准" level="4" leaf="true" />
+                -->
             </Node>
-            <Node name="处置顺序" level="3" leaf="true" />
+            <Node name="拨打求助电话要求" level="3" leaf="true" />
+            <!--
             <Node name="现场急救基本要求" level="3" leaf="true" />
             <Node name="急救检查程序（DRABC）" level="3" leaf="true" />
             <Node name="国际通用处置程序" level="3" leaf="true" />
+            -->
         </Node>
 
         <Node name="基本急救技术" level="2" leaf="false">
@@ -76,7 +81,6 @@
                     <Node name="旋压式止血（止血带止血法）" level="5" leaf="true" />
                 </Node>
                 <Node name="屈臂加压止血法（1种）" level="4" leaf="true" />
-                <Node name="急救止血绷带" level="4" leaf="true" />
             </Node>
             <Node name="包扎" level="3" leaf="false">
                 <Node name="三角巾包扎法" level="4" leaf="false">
@@ -99,8 +103,6 @@
                         <Node name="手三角巾包扎法" level="6" leaf="true" />
                         <Node name="手“8”字包扎法" level="6" leaf="true" />
                         <Node name="单侧手臂包扎法" level="6" leaf="true" />
-                    </Node>
-                    <Node name="上肢悬吊法" level="5" leaf="false">
                         <Node name="大悬臂带包扎法" level="6" leaf="true" />
                         <Node name="小悬臂带包扎法" level="6" leaf="true" />
                     </Node>
@@ -114,116 +116,136 @@
                         <Node name="腹部兜式包扎法" level="6" leaf="true" />
                         <Node name="腹部燕尾式包扎法" level="6" leaf="true" />
                     </Node>
-                    <Node name="臀部伤包扎法" level="5" leaf="false">
+                    <Node name="腹股沟及臀部伤包扎法" level="5" leaf="false">
                         <Node name="腹股沟与臀部包扎法" level="6" leaf="true" />
                         <Node name="单侧臀部燕尾式包扎法" level="6" leaf="true" />
                         <Node name="双侧臀部蝴蝶式包扎法" level="6" leaf="true" />
                     </Node>
-                    <Node name="膝部三角巾包扎" level="5" leaf="true" />
+                    <Node name="膝关节伤包扎法" level="5" leaf="false">
+                        <Node name="膝部三角巾包扎法" level="6" leaf="true" />
+                    </Node>
                 </Node>
                 <Node name="绷带包扎法" level="4" leaf="false">
-                    <Node name="绷带说明" level="5" leaf="true" />
-                    <Node name="绷带包扎法" level="5" leaf="false">
-                        <Node name="头部包扎法" level="6" leaf="true" />
-                        <Node name="眼部包扎法" level="6" leaf="true" />
-                        <Node name="耳部包扎法" level="6" leaf="true" />
-                        <Node name="单肩包扎法" level="6" leaf="true" />
-                        <Node name="胸部包扎法" level="6" leaf="true" />
-                        <Node name="单侧腹股沟包扎法" level="6" leaf="true" />
-                        <Node name="手部露指尖包扎法" level="6" leaf="true" />
-                        <Node name="单指包扎法" level="6" leaf="true" />
-                        <Node name="肘部包扎法" level="6" leaf="true" />
-                        <Node name="足跟部包扎法" level="6" leaf="true" />
-                    </Node>
-                    <Node name="医用自粘性绷带使用方法" level="5" leaf="true" />
-                </Node>
+                    <Node name="头部包扎法" level="5" leaf="true" />
+                    <Node name="眼部包扎法" level="5" leaf="true" />
+                    <Node name="耳部包扎法" level="5" leaf="true" />
+                    <Node name="单肩包扎法" level="5" leaf="true" />
+                    <Node name="胸部包扎法" level="5" leaf="true" />
+                    <Node name="单侧腹股沟包扎法" level="5" leaf="true" />
+                    <Node name="手部露指尖包扎法" level="5" leaf="true" />
+                    <Node name="单指包扎法" level="5" leaf="true" />
+                    <Node name="肘部包扎法" level="5" leaf="true" />
+                    <Node name="足跟部包扎法" level="5" leaf="true" />
             </Node>
+            
+            <!--
+            <Node name="抗休克" level="3" leaf="fasle">
+                <Node name="战场休克" level="4" leaf="true" />
+                <Node name="抗休克裤使用" level="4" leaf="true" />
+            </Node>
+                      
+            <Node name="止痛" level="3" leaf="true" />
+            -->  
+        </Node>
             <Node name="固定" level="3" leaf="false">
-                <Node name="锁骨骨折固定" level="4" leaf="false">
-                    <Node name="“T”字型夹板固定法" level="5" leaf="true" />
-                    <Node name="锁骨骨折三角巾固定法" level="5" leaf="true" />
-                </Node>
-                <Node name="肱骨骨折固定" level="4" leaf="false">
-                    <Node name="肱骨骨折夹板固定法" level="5" leaf="true" />
-                    <Node name="肱骨骨折三角巾固定法" level="5" leaf="true" />
-                </Node>
-                <Node name="前臂骨折固定" level="4" leaf="false">
-                    <Node name="前臂骨折夹板固定法" level="5" leaf="true" />
-                    <Node name="前臂骨折三角巾固定法" level="5" leaf="true" />
-                </Node>
-                <Node name="股骨骨折固定" level="4" leaf="false">
-                    <Node name="股骨骨折夹板固定法" level="5" leaf="true" />
-                    <Node name="股骨骨折键肢固定法" level="5" leaf="true" />
-                </Node>
-                <Node name="胫（腓）骨骨折固定" level="4" leaf="false">
-                    <Node name="胫（腓）骨折夹板固定法" level="5" leaf="true" />
-                    <Node name="胫（腓）小腿骨折键肢固定法" level="5" leaf="true" />
-                </Node>
+                <Node name="“T”字型夹板固定法" level="4" leaf="true" />
+                <Node name="锁骨骨折三角巾固定法" level="4" leaf="true" />
+                <Node name="肱骨骨折夹板固定法" level="4" leaf="true" />
+                <Node name="肱骨骨折三角巾固定法" level="4" leaf="true" />
+                <Node name="前臂骨折夹板固定法" level="4" leaf="true" />
+                <Node name="前臂骨折三角巾固定法" level="4" leaf="true" />
+                <Node name="股骨骨折夹板固定法" level="4" leaf="true" />
+                <Node name="股骨骨折键肢固定法" level="4" leaf="true" />
+                <Node name="小腿骨折夹板固定法" level="4" leaf="true" />
+                <Node name="小腿骨折键肢固定法" level="4" leaf="true" />
             </Node>
             <Node name="搬运" level="3" leaf="false">
                 <Node name="单人搬运法" level="4" leaf="false">
+                    <Node name="拖动法" level="5" leaf="true" />
+                    <Node name="搀扶伤（病）员" level="5" leaf="true" />
                     <Node name="扛法" level="5" leaf="true" />
                     <Node name="背法" level="5" leaf="true" />
                     <Node name="抱法" level="5" leaf="true" />
                     <Node name="单人匍匐搬运法" level="5" leaf="true" />
                     <Node name="单人侧姿搬运法" level="5" leaf="true" />
-                    <Node name="拖动法" level="5" leaf="true" />
-                    <Node name="搀扶伤（病）员" level="5" leaf="true" />
                 </Node>
                 <Node name="双人搬运法" level="4" leaf="false">
+                    <Node name="四手“扶椅”法" level="5" leaf="true" />
                     <Node name="依托式" level="5" leaf="true" />
                     <Node name="拉车式" level="5" leaf="true" />
                     <Node name="双人同步搬运法" level="5" leaf="true" />
                     <Node name="双人交互式搬运法" level="5" leaf="true" />
-                    <Node name="四手“扶椅”法" level="5" leaf="true" />
                 </Node>
                 <Node name="担架搬运法" level="4" leaf="false">
                     <Node name="一般伤员上担架法" level="5" leaf="true" />
-                    <Node name="脊柱颈椎伤病员搬运法（三人搬运法）" level="5" leaf="true" />
-                    <Node name="脊柱颈椎伤病员搬运法（四人搬运法）" level="5" leaf="true" />
-                    <Node name="担架拖拉式双人搬运法" level="5" leaf="true" />
-                    <Node name="担架搬运注意事项" level="5" leaf="true" />
+                    <Node name="脊柱脊髓伤伤（病）员搬运法" level="5" leaf="true" />
+                    <Node name="颈椎伤伤（病）员搬运法" level="5" leaf="true" />
+                    <Node name="担架拖拉式双人匍匐搬运法" level="5" leaf="true" />
+                    <Node name="注意事项" level="5" leaf="true" />
                 </Node>
             </Node>
-            <Node name="抗休克" level="3" leaf="fasle">
-                <Node name="战场休克" level="4" leaf="true" />
-                <Node name="抗休克裤使用" level="4" leaf="true" />
+        </Node>
+        
+        <Node name="急救小贴士" level="2" leaf="fasle">
+            <Node name="暴露伤口的方法" level="3" leaf="true" />
+            <Node name="就便器材选择、制作及使用" level="3" leaf="false">
+                <Node name="包扎物选材及使用" level="4" leaf="true" />
+                <Node name="衣物固定包扎法" level="4" leaf="true" />
+                <Node name="简易颈托制作及使用" level="4" leaf="true" />
+                <Node name="简易担架制作及使用" level="4" leaf="true" />
             </Node>
-            
-            <Node name="止痛" level="3" leaf="true" />
-            
-            <Node name="附：急救小贴士" level="3" leaf="fasle">
-                <Node name="简易急救器材的使用方法" level="4" leaf="false">
-                    <Node name="简易担架制作法" level="5" leaf="true" />
-                    <Node name="简易颈托制作法" level="5" leaf="true" />
-                    <Node name="衣物包扎固定方法" level="5" leaf="true" />
-                </Node>
-                <Node name="脱去衣物等方法" level="4" leaf="false">
-                    <Node name="脱去伤病员上衣" level="5" leaf="true" />
-                    <Node name="脱去伤病员裤子" level="5" leaf="true" />
-                    <Node name="脱去伤病员鞋子" level="5" leaf="true" />
-                    <Node name="脱去伤病员袜子" level="5" leaf="true" />
-                    <Node name="脱去伤病员头盔" level="5" leaf="true" />
-                </Node>
-                <Node name="拨打急救电话方法" level="4" leaf="true" />
+            <!--
+            <Node name="脱去衣物等方法" level="3" leaf="false">
+                <Node name="简易担架制作法" level="4" leaf="true" />
+                <Node name="简易颈托制作法" level="4" leaf="true" />
+                <Node name="衣物包扎固定方法" level="4" leaf="true" />
+                <Node name="脱去伤病员上衣" level="4" leaf="true" />
+                <Node name="脱去伤病员裤子" level="4" leaf="true" />
+                <Node name="脱去伤病员鞋子" level="4" leaf="true" />
+                <Node name="脱去伤病员袜子" level="4" leaf="true" />
+                <Node name="脱去伤病员头盔" level="4" leaf="true" />
             </Node>
+            -->            
         </Node>
     </Node>
     
-    <Node name="应用技术" level="1" leaf="false">
+    <Node name="综合应用" level="1" leaf="false">
         <Node name="各部位伤的战（现）场急救" level="2" leaf="false">
-            <Node name="颅脑损伤" level="3" leaf="true" />
-            <Node name="胸部外伤" level="3" leaf="true" />
+            <Node name="颅脑损伤" level="3" leaf="false">
+                <Node name="头皮撕裂伤" level="4" leaf="true" />
+                <Node name="脑脊液外漏" level="4" leaf="true" />
+                <Node name="开放性颅脑损伤" level="4" leaf="true" />
+            </Node>
+            <Node name="胸部外伤" level="3" leaf="false">
+                <Node name="胸部浅表伤口处理" level="4" leaf="true" />
+                <Node name="张力性气胸" level="4" leaf="true" />
+                <Node name="开放性气胸" level="4" leaf="true" />
+                <Node name="连枷胸" level="4" leaf="true" />
+            </Node>
             <Node name="腹部外伤" level="3" leaf="true" />
             <Node name="脊柱、脊髓损伤" level="3" leaf="true" />
-            <Node name="四肢外伤（骨折、肢体断离）" level="3" leaf="true" />
+            <Node name="四肢外伤（骨折、肢体断离）" level="3" leaf="false">
+                <Node name="开放性骨折" level="4" leaf="true" />
+                <Node name="肢体断离" level="4" leaf="true" />
+            </Node>
             <Node name="骨盆和会阴部外伤" level="3" leaf="true" />
             <Node name="颌、面、颈部外伤" level="3" leaf="true" />
-            <Node name="眼部外伤" level="3" leaf="true" />
-            <Node name="鼻出血、鼻异物" level="3" leaf="true" />
-            <Node name="耳部外伤及异物" level="3" leaf="true" />
+            <Node name="眼部伤、眼异物及眼睛化学烧伤" level="3" leaf="false">
+                <Node name="眼部伤" level="4" leaf="true" />
+                <Node name="眼异物" level="4" leaf="true" />
+                <Node name="眼睛化学药剂损伤" level="4" leaf="true" />
+            </Node>
+            <Node name="鼻出血、鼻异物" level="3" leaf="false">
+                <Node name="鼻出血" level="4" leaf="true" />
+                <Node name="鼻异物" level="4" leaf="true" />
+            </Node>
+            <Node name="耳部外伤及异物" level="3" leaf="false">
+                <Node name="耳部外伤" level="4" leaf="true" />
+                <Node name="耳部异物" level="4" leaf="true" />
+            </Node>
         </Node>
-        <Node name="常见危重急症战（现）场急救" level="2" leaf="false">
+        
+        <Node name="常见危重急症" level="2" leaf="false">
             <Node name="脑血管急症" level="3" leaf="false">
                 <Node name="脑卒中" level="4" leaf="true" />
                 <Node name="癫痫" level="4" leaf="true" />
@@ -236,44 +258,51 @@
                 <Node name="心绞痛" level="4" leaf="true" />
                 <Node name="心肌梗死" level="4" leaf="true" />
             </Node>
+            <Node name="战场休克" level="3" leaf="true" />
         </Node>
+        
         <Node name="特殊事故伤战（现）场急救" level="2" leaf="false">
             <Node name="放射性损伤" level="3" leaf="true" />
             <Node name="化学毒剂损伤" level="3" leaf="true" />
             <Node name="推进剂损伤" level="3" leaf="true" />
         </Node>
+        
         <Node name="常见损伤" level="2" leaf="false">
             <Node name="常见中毒急救" level="3" leaf="false">
                 <Node name="食物中毒" level="4" leaf="true" />
                 <Node name="农药中毒" level="4" leaf="true" />
                 <Node name="一氧化碳（煤气）中毒" level="4" leaf="true" />
             </Node>
+            
             <Node name="中暑" level="3" leaf="true" />
-            <Node name="烧伤" level="3" leaf="true" />
-            <Node name="冻伤" level="3" leaf="true" />
-            <Node name="晕动症" level="3" leaf="true" />
+            <Node name="烧伤、冻伤" level="3" leaf="false">
+                <Node name="烧伤" level="4" leaf="true" />
+                <Node name="冻伤" level="4" leaf="true" />
+            </Node>
+            <Node name="晕车晕船" level="3" leaf="true" />
             <Node name="毒蛇咬伤" level="3" leaf="true" />
             <Node name="挤压伤" level="3" leaf="true" />
             <Node name="冲击伤" level="3" leaf="true" />
             <Node name="训练伤" level="3" leaf="false">
                 <Node name="拉伤、扭伤" level="4" leaf="true" />
+                <Node name="骨折" level="4" leaf="true" />
                 <Node name="肌肉痉挛" level="4" leaf="true" />
             </Node>
         </Node>
+        
         <Node name="灾害事故现场急救" level="2" leaf="false">
             <Node name="电击伤" level="3" leaf="true" />
             <Node name="淹溺" level="3" leaf="true" />
             <Node name="自然灾害自身防护" level="3" leaf="false">
-                <Node name="地震发生时个人防护" level="4" leaf="true" />
-                <Node name="洪水爆发后自救方法" level="4" leaf="true" />
+                <Node name="地震" level="4" leaf="true" />
+                <Node name="洪水爆发" level="4" leaf="true" />
             </Node>
             <Node name="交通事故现场防护及处理" level="3" leaf="true" />
             <Node name="火灾现场防护及处理" level="3" leaf="true" />
         </Node>
     </Node>
     
-    <Node name="心理支持及适应训练" leaf="true">
+    <Node name="心理支持及适应训练" level="1" leaf="true">
 
     </Node>
-    
-</Directory>
+</Node>
