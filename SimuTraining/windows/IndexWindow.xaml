@@ -20,8 +20,8 @@
         <Image Grid.Row="0" Source="../res/img/head_title_second.png" />
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button Name="mainPage" Content="首页" Margin="20" />
-            <Button Name="return" Content="返回" />
+            <Button Name="mainPage" Content="首页" Margin="20" Click="mainPage_Click" />
+            <Button Name="return" Content="返回" Click="return_Click" />
         </StackPanel>
         <!-- end of static layout -->
 
@@ -32,12 +32,12 @@
             </Grid.RowDefinitions>
 
             <StackPanel Name="breadcrumb" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Label Content="首页" Margin="20 0 0 0" />
-                <Label Content=">" Margin="20 0 0 0" />
-                <Label Name="test" Margin="20 0 0 0" />
+                
             </StackPanel>
-
-
+            
+            <Grid Name="body">
+                
+            </Grid>
 
         </Grid>
 

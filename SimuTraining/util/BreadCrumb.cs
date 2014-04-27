@@ -48,10 +48,13 @@ namespace SimuTraining.util
             node.Level = Convert.ToInt32(item.Attributes["level"].Value.ToString());
             node.Leaf = item.Attributes["leaf"].Value.ToString().Equals("true");
 
-            node.Description = ConfigurationManager.AppSettings[node.Name + "description"].ToString();
-            if (node.Leaf)
+            if (ConfigHolder.getInfo().ContainsKey(node.Name + ".d"))
             {
-                node.Filelocation = ConfigurationManager.AppSettings[node.Name + "file"].ToString();
+                node.Description = ConfigHolder.getInfo()[node.Name + ".d"];
+            }
+            if (node.Leaf && ConfigHolder.getInfo().ContainsKey(node.Name + ".f"))
+            {
+                node.Filelocation = ConfigHolder.getInfo()[node.Name + ".f"];
             }
 
             XmlNodeList list = item.ChildNodes;
