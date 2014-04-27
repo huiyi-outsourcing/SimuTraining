@@ -6,10 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows;
+using System.IO;
 using Microsoft.Win32;
 
 using SimuTraining.windows;
 using SimuTraining.util;
+using System.Reflection;
 
 namespace SimuTraining
 {
@@ -20,22 +22,23 @@ namespace SimuTraining
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            
             //SplashScreen sp = new SplashScreen("res/img/welcome.png");
             //sp.Show(true, true);
             //sp.Close(new TimeSpan(0, 0, 3));
             //Thread.Sleep(3000);
 
-            if (confirmAuthorization())
-            {
-                Window login = new LoginWindow();
-                login.Show();
-            }
-            else
-            {
-                Window auth = new AuthWindow();
-                auth.Show();
-            }
+            //if (confirmAuthorization())
+            //{
+            //    Window login = new LoginWindow();
+            //    login.Show();
+            //}
+            //else
+            //{
+            //    Window auth = new AuthWindow();
+            //    auth.Show();
+            
+            Window index = new IndexWindow(BreadCrumb.getRoot());
+            index.Show();
 
             base.OnStartup(e);
         }
@@ -54,5 +57,6 @@ namespace SimuTraining
                 return false;
             }
         }
+
     }
 }

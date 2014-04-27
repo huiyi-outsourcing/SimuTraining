@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using SimuTraining.util;
+
 namespace SimuTraining
 {
     /// <summary>
@@ -40,8 +42,9 @@ namespace SimuTraining
 
         private void enterSimuTraining(object sender, MouseButtonEventArgs e)
         {
-            Window training = new windows.TrainingWindow();
-            training.Show();
+            Node root = BreadCrumb.getRoot();
+            Window index = new windows.IndexWindow(root);
+            index.Show();
             this.Close();
         }
 
