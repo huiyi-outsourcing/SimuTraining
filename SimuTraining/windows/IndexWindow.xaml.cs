@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 using SimuTraining.util;
 
@@ -70,6 +71,7 @@ namespace SimuTraining.windows
                 Label label = new Label();
                 label.Content = top.Name;
                 label.Margin = new Thickness(20, 0, 0, 0);
+                label.Tag = top;
                 label.MouseLeftButtonDown += gotoPrev;
                 breadcrumb.Children.Add(label);
 
@@ -106,64 +108,95 @@ namespace SimuTraining.windows
 
         private void generateDirectoryPage()
         {
-            if (current.Children.Count <= 3)
+            int children = current.Children.Count;
+
+            if (current.Level == 0)
             {
-                OneColumn();
-            }
-            else if (current.Children.Count <= 6)
-            {
-                TwoColumn();
+                TwoRow();
             }
             else
             {
-                MultiColumn();
+                if (children <= 4)
+                {
+                    OneRow();
+                }
+                else if (children <= 6)
+                {
+                    TwoRow();
+                }
+                else if (children <= 8)
+                {
+                    TwoRow();
+                }
+                else
+                {
+                    MultiRow();
+                }
             }
         }
 
-        private void OneColumn()
+        private void OneRow()
         {
             StackPanel panel = new StackPanel();
-            panel.Orientation = Orientation.Horizontal;
+            StackPanel one = new StackPanel();
+            one.Orientation = Orientation.Horizontal;
 
             List<Node> children = current.Children;
             foreach (Node node in children)
             {
-                Image img = new Image();
-                BitmapImage bi = new BitmapImage(new Uri("res/img/" + node.Name + ".png"));
-                img.Source = bi;
+                Image img = createImage(node, children.Count);
+                if (img == null || img.Source == null)
+                {
+                    Label label = new Label();
+                    label.Content = node.Name;
+                    label.Width = 209;
+                    label.Height = 200;
 
-                img.Height = bi.PixelHeight;
-                img.Width = bi.PixelWidth;
-                img.Margin = new Thickness(10);
 
-                panel.Children.Add(img);
+                    one.Children.Add(label);
+
+                    continue;
+                }
+
+                one.Children.Add(img);
             }
 
+            panel.Children.Add(one);
             body.Children.Add(panel);
         }
 
-        private void TwoColumn()
+        private void TwoRow()
         {
+            StackPanel panel = new StackPanel();
+            panel.Orientation = Orientation.Vertical;
+            panel.Margin = new Thickness(10, 10, 10, 10);
             StackPanel one = new StackPanel();
             one.Orientation = Orientation.Horizontal;
+            one.Margin = new Thickness(0, 20, 0, 20);
             StackPanel two = new StackPanel();
             two.Orientation = Orientation.Horizontal;
+            two.Margin = new Thickness(0, 20, 0, 20);
 
             List<Node> nodes = current.Children;
             if (current.Children.Count == 4)
             {
                 for (int i = 0; i < 4; ++i)
                 {
-                    Image img = new Image();
-                    BitmapImage bi = new BitmapImage();
-                    bi.BeginInit();
-                    bi.UriSource = new Uri("../res/img/" + nodes[i].Name + ".png", UriKind.Relative);
-                    bi.EndInit();
+                    Image img = createImage(nodes[i], nodes.Count);
+                    if (img == null)
+                    {
+                        Label label = new Label();
+                        label.Content = nodes[i].Name;
+                        label.Width = 209;
+                        label.Height = 200;
 
-                    img.Source = bi;
-                    img.Height = bi.PixelHeight;
-                    img.Width = bi.PixelWidth;
-                    img.Margin = new Thickness(10);
+                        if (i < 2)
+                            one.Children.Add(label);
+                        else
+                            two.Children.Add(label);
+
+                        continue;
+                    }
 
                     if (i < 2)
                         one.Children.Add(img);
@@ -175,12 +208,21 @@ namespace SimuTraining.windows
             {
                 for (int i = 0; i < nodes.Count; ++i)
                 {
-                    Image img = new Image();
-                    BitmapImage bi = new BitmapImage(new Uri("res/img/" + nodes[i].Name + ".png"));
-                    img.Source = bi;
-                    img.Height = bi.PixelHeight;
-                    img.Width = bi.PixelWidth;
-                    img.Margin = new Thickness(10);
+                    Image img = createImage(nodes[i], nodes.Count);
+                    if (img == null)
+                    {
+                        Label label = new Label();
+                        label.Content = nodes[i].Name;
+                        label.Width = 209;
+                        label.Height = 200;
+
+                        if (i < 2)
+                            one.Children.Add(label);
+                        else
+                            two.Children.Add(label);
+
+                        continue;
+                    }
 
                     if (i < 3)
                         one.Children.Add(img);
@@ -189,41 +231,114 @@ namespace SimuTraining.windows
                 }
             }
 
-            body.Children.Add(one);
-            body.Children.Add(two);
+            panel.Children.Add(one);
+            panel.Children.Add(two);
+            body.Children.Add(panel);
         }
 
-        private void MultiColumn()
-        { 
-            
+        private void MultiRow()
+        {
+            StackPanel panel = new StackPanel() { Orientation = Orientation.Vertical };
+            panel.Margin = new Thickness(10);
+            StackPanel one = new StackPanel() { Orientation = Orientation.Horizontal };
+            //one.Margin = new Thickness(0, 10, 0, 10);
+            StackPanel two = new StackPanel() { Orientation = Orientation.Horizontal };
+            //two.Margin = new Thickness(0, 10, 0, 10);
+            StackPanel three = new StackPanel() { Orientation = Orientation.Horizontal };
+            three.HorizontalAlignment = HorizontalAlignment.Left;
+            //three.Margin = new Thickness(0, 10, 0, 10);
+
+            List<Node> nodes = current.Children;
+            for (int i = 0; i < nodes.Count; ++i)
+            {
+                Image img = createImage(nodes[i], nodes.Count);
+                //if (img == null)
+                //{
+                //    Label label = new Label();
+                //    label.Content = nodes[i].Name;
+                //    label.Width = 209;
+                //    label.Height = 200;
+
+                //    if (i < 3)
+                //        one.Children.Add(label);
+                //    else if (i < 6)
+                //        two.Children.Add(label);
+                //    else
+                //        three.Children.Add(label);
+
+                //    continue;
+                //}
+
+                if (i < 4)
+                    one.Children.Add(img);
+                else if (i < 8)
+                    two.Children.Add(img);
+                else
+                    three.Children.Add(img);
+            }
+
+            panel.Children.Add(one);
+            panel.Children.Add(two);
+            if (nodes.Count > 8)
+                panel.Children.Add(three);
+            body.Children.Add(panel);
+        }
+
+        private Image createImage(Node node, int children)
+        {
+            //if (!File.Exists("res/img/" + node.Name + ".png"))
+            //{
+            //    return null;
+            //}
+
+            Image img = new Image();
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.UriSource = new Uri("res/img/" + node.Name + ".png", UriKind.Relative);
+            bi.EndInit();
+            bi.Freeze();
+
+            img.Source = bi;
+            if (node.Level == 1)
+            {
+                img.Height = 118;
+                img.Width = 258;
+            }
+            else
+            {
+                if (children <= 6)
+                {
+                    img.Height = 200;
+                    img.Width = 209;
+                }
+                else
+                {
+                    img.Height = 150;
+                    img.Width = 153;
+                }
+            }
+
+            img.Margin = new Thickness(10, 0, 80, 0);
+            img.Tag = node;
+            img.MouseLeftButtonDown += gotoNext;
+
+            return img;
         }
         #endregion
 
         #region EventHandlers
         private void gotoPrev(object sender, MouseButtonEventArgs e)
         {
-            Label label = (Label)sender;
-            String content = label.Content.ToString();
+            Node node = (sender as Label).Tag as Node;
 
-            Node tmp = current;
-            Node result = null;
-            while (tmp != null)
-            {
-                if (tmp.Name.Equals(content))
-                {
-                    result = tmp;
-                    break;
-                }
-
-                tmp = tmp.Parent;
-            }
-
-            refreshLayout(result);
+            refreshLayout(node);
         }
 
         private void gotoNext(object sender, MouseButtonEventArgs e)
         {
-            
+            Node node = (sender as Image).Tag as Node;
+
+            refreshLayout(node);
         }
 
         private void mainPage_Click(object sender, RoutedEventArgs e)
@@ -235,7 +350,14 @@ namespace SimuTraining.windows
 
         private void return_Click(object sender, RoutedEventArgs e)
         {
-            refreshLayout(current.Parent);
+            if (current.Parent != null)
+            {
+                refreshLayout(current.Parent);
+            }
+            else
+            {
+                refreshLayout(current);
+            }
         }
         #endregion
     }

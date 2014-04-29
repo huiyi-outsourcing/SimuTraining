@@ -15,7 +15,7 @@
             <Node name="现场急救的实施" level="3" leaf="true"/>
         </Node>
         
-        <Node name="附、地方现场急救组织与实施" level="2" leaf="false">
+        <Node name="地方现场急救组织与实施" level="2" leaf="false">
             <Node name="现场救援主要机构、职责" level="3" leaf="true"/>
             <Node name="现场医疗救援区域设置" level="3" leaf="true"/>
             <Node name="现场（院前）评估" level="3" leaf="true"/>
@@ -51,8 +51,8 @@
             </Node>
             <Node name="止血" level="3" leaf="fasle">
                 <Node name="判断出血" level="4" leaf="true" />
-                <Node name="加压包扎止血法 （1种）" level="4" leaf="true" />
-                <Node name="指压止血法（9种）" level="4" leaf="false">
+                <Node name="加压包扎止血法" level="4" leaf="true" />
+                <Node name="指压止血法" level="4" leaf="false">
                     <Node name="颞动脉止血法" level="5" leaf="true" />
                     <Node name="面动脉止血法" level="5" leaf="true" />
                     <Node name="颈动脉止血法" level="5" leaf="true" />
@@ -63,15 +63,14 @@
                     <Node name="足背动脉与胫后动脉止血法" level="5" leaf="true" />
                     <Node name="指动脉止血法" level="5" leaf="true" />
                 </Node>
-                <Node name="填塞止血法（1种）" level="4" leaf="true" />
-                <Node name="止血带止血法（4种）" level="4" leaf="false">
+                <Node name="填塞止血法" level="4" leaf="true" />
+                <Node name="止血带止血法" level="4" leaf="false">
                     <Node name="充气止血带止血法" level="5" leaf="true" />
                     <Node name="橡皮止血带止血法" level="5" leaf="true" />
                     <Node name="绞棒止血法" level="5" leaf="true" />
                     <Node name="卡式止血带止血法" level="5" leaf="true" />
-                    <Node name="旋压式止血（止血带止血法）" level="5" leaf="true" />
                 </Node>
-                <Node name="屈臂加压止血法（1种）" level="4" leaf="true" />
+                <Node name="屈臂加压止血法" level="4" leaf="true" />
             </Node>
             <Node name="包扎" level="3" leaf="false">
                 <Node name="三角巾包扎法" level="4" leaf="false">

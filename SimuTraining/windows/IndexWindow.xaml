@@ -35,8 +35,7 @@
                 
             </StackPanel>
             
-            <Grid Name="body">
-                
+            <Grid Name="body" Grid.Row="1">
             </Grid>
 
         </Grid>
