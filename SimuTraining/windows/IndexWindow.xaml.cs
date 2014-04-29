@@ -70,7 +70,7 @@ namespace SimuTraining.windows
             {
                 Label label = new Label();
                 label.Content = top.Name;
-                label.Margin = new Thickness(20, 0, 0, 0);
+                label.Margin = new Thickness(5, 0, 0, 0);
                 label.Tag = top;
                 label.MouseLeftButtonDown += gotoPrev;
                 breadcrumb.Children.Add(label);
@@ -80,7 +80,7 @@ namespace SimuTraining.windows
                 {
                     Label arrow = new Label();
                     arrow.Content = ">";
-                    arrow.Margin = new Thickness(20, 0, 0, 0);
+                    arrow.Margin = new Thickness(5, 0, 0, 0);
                     breadcrumb.Children.Add(arrow);
                 }
 
@@ -145,18 +145,6 @@ namespace SimuTraining.windows
             foreach (Node node in children)
             {
                 Image img = createImage(node, children.Count);
-                if (img == null || img.Source == null)
-                {
-                    Label label = new Label();
-                    label.Content = node.Name;
-                    label.Width = 209;
-                    label.Height = 200;
-
-
-                    one.Children.Add(label);
-
-                    continue;
-                }
 
                 one.Children.Add(img);
             }
@@ -183,22 +171,20 @@ namespace SimuTraining.windows
                 for (int i = 0; i < 4; ++i)
                 {
                     Image img = createImage(nodes[i], nodes.Count);
-                    if (img == null)
-                    {
-                        Label label = new Label();
-                        label.Content = nodes[i].Name;
-                        label.Width = 209;
-                        label.Height = 200;
-
-                        if (i < 2)
-                            one.Children.Add(label);
-                        else
-                            two.Children.Add(label);
-
-                        continue;
-                    }
 
                     if (i < 2)
+                        one.Children.Add(img);
+                    else
+                        two.Children.Add(img);
+                }
+            }
+            else if (current.Children.Count < 8)
+            {
+                for (int i = 0; i < nodes.Count; ++i)
+                {
+                    Image img = createImage(nodes[i], nodes.Count);
+
+                    if (i < 3)
                         one.Children.Add(img);
                     else
                         two.Children.Add(img);
@@ -209,22 +195,8 @@ namespace SimuTraining.windows
                 for (int i = 0; i < nodes.Count; ++i)
                 {
                     Image img = createImage(nodes[i], nodes.Count);
-                    if (img == null)
-                    {
-                        Label label = new Label();
-                        label.Content = nodes[i].Name;
-                        label.Width = 209;
-                        label.Height = 200;
 
-                        if (i < 2)
-                            one.Children.Add(label);
-                        else
-                            two.Children.Add(label);
-
-                        continue;
-                    }
-
-                    if (i < 3)
+                    if (i < 4)
                         one.Children.Add(img);
                     else
                         two.Children.Add(img);

@@ -35,7 +35,7 @@
             <Node name="通气" level="3" leaf="false">
                 <Node name="手指掏出术" level="4" leaf="true" />
                 <Node name="立位腹部冲击法（海姆立克手法）" level="4" leaf="true" />
-                <Node name="拍背法：用于清醒伤员" level="4" leaf="true" />
+                <Node name="拍背法" level="4" leaf="true" />
                 <Node name="舌后缀的控制" level="4" leaf="true" />
                 <Node name="悬吊固定上颌骨" level="4" leaf="true" />
                 <Node name="环甲膜穿刺" level="4" leaf="true" />
