@@ -102,8 +102,9 @@ namespace SimuTraining.windows
         }
 
         private void generateMediaPage()
-        { 
-            
+        {
+            Player player = new Player();
+            body.Children.Add(player);
         }
 
         private void generateDirectoryPage()
