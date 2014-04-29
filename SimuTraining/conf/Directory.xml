@@ -27,17 +27,8 @@
         <Node name="伤员伤势评估" level="2" leaf="false">
             <Node name="生命体征检查" level="3" leaf="true" />
             <Node name="伤势评估参考标准（军、地）" level="3" leaf="true">
-                <!--
-                <Node name="军队伤势评估参考标准" level="4" leaf="true" />
-                <Node name="地方伤势评估参考标准" level="4" leaf="true" />
-                -->
             </Node>
             <Node name="拨打求助电话要求" level="3" leaf="true" />
-            <!--
-            <Node name="现场急救基本要求" level="3" leaf="true" />
-            <Node name="急救检查程序（DRABC）" level="3" leaf="true" />
-            <Node name="国际通用处置程序" level="3" leaf="true" />
-            -->
         </Node>
 
         <Node name="基本急救技术" level="2" leaf="false">
@@ -90,7 +81,7 @@
                         <Node name="头部风帽式包扎法" level="6" leaf="true" />
                         <Node name="面具式包扎法" level="6" leaf="true" />
                         <Node name="单侧面部包扎法" level="6" leaf="true" />
-                        <Node name="眼部包扎法" level="6" leaf="true" />
+                        <Node name="眼部包扎法（三角巾）" level="6" leaf="true" />
                         <Node name="单耳或双耳包扎法" level="6" leaf="true" />
                         <Node name="下颌带式包扎法" level="6" leaf="true" />
                     </Node>
@@ -127,7 +118,7 @@
                 </Node>
                 <Node name="绷带包扎法" level="4" leaf="false">
                     <Node name="头部包扎法" level="5" leaf="true" />
-                    <Node name="眼部包扎法" level="5" leaf="true" />
+                    <Node name="眼部包扎法（绷带）" level="5" leaf="true" />
                     <Node name="耳部包扎法" level="5" leaf="true" />
                     <Node name="单肩包扎法" level="5" leaf="true" />
                     <Node name="胸部包扎法" level="5" leaf="true" />
@@ -137,15 +128,6 @@
                     <Node name="肘部包扎法" level="5" leaf="true" />
                     <Node name="足跟部包扎法" level="5" leaf="true" />
             </Node>
-            
-            <!--
-            <Node name="抗休克" level="3" leaf="fasle">
-                <Node name="战场休克" level="4" leaf="true" />
-                <Node name="抗休克裤使用" level="4" leaf="true" />
-            </Node>
-                      
-            <Node name="止痛" level="3" leaf="true" />
-            -->  
         </Node>
             <Node name="固定" level="3" leaf="false">
                 <Node name="“T”字型夹板固定法" level="4" leaf="true" />
@@ -193,19 +175,7 @@
                 <Node name="衣物固定包扎法" level="4" leaf="true" />
                 <Node name="简易颈托制作及使用" level="4" leaf="true" />
                 <Node name="简易担架制作及使用" level="4" leaf="true" />
-            </Node>
-            <!--
-            <Node name="脱去衣物等方法" level="3" leaf="false">
-                <Node name="简易担架制作法" level="4" leaf="true" />
-                <Node name="简易颈托制作法" level="4" leaf="true" />
-                <Node name="衣物包扎固定方法" level="4" leaf="true" />
-                <Node name="脱去伤病员上衣" level="4" leaf="true" />
-                <Node name="脱去伤病员裤子" level="4" leaf="true" />
-                <Node name="脱去伤病员鞋子" level="4" leaf="true" />
-                <Node name="脱去伤病员袜子" level="4" leaf="true" />
-                <Node name="脱去伤病员头盔" level="4" leaf="true" />
-            </Node>
-            -->            
+            </Node>      
         </Node>
     </Node>
     

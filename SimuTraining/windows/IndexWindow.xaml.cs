@@ -105,6 +105,95 @@ namespace SimuTraining.windows
         }
 
         private void generateDirectoryPage()
+        {
+            if (current.Children.Count <= 3)
+            {
+                OneColumn();
+            }
+            else if (current.Children.Count <= 6)
+            {
+                TwoColumn();
+            }
+            else
+            {
+                MultiColumn();
+            }
+        }
+
+        private void OneColumn()
+        {
+            StackPanel panel = new StackPanel();
+            panel.Orientation = Orientation.Horizontal;
+
+            List<Node> children = current.Children;
+            foreach (Node node in children)
+            {
+                Image img = new Image();
+                BitmapImage bi = new BitmapImage(new Uri("res/img/" + node.Name + ".png"));
+                img.Source = bi;
+
+                img.Height = bi.PixelHeight;
+                img.Width = bi.PixelWidth;
+                img.Margin = new Thickness(10);
+
+                panel.Children.Add(img);
+            }
+
+            body.Children.Add(panel);
+        }
+
+        private void TwoColumn()
+        {
+            StackPanel one = new StackPanel();
+            one.Orientation = Orientation.Horizontal;
+            StackPanel two = new StackPanel();
+            two.Orientation = Orientation.Horizontal;
+
+            List<Node> nodes = current.Children;
+            if (current.Children.Count == 4)
+            {
+                for (int i = 0; i < 4; ++i)
+                {
+                    Image img = new Image();
+                    BitmapImage bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.UriSource = new Uri("../res/img/" + nodes[i].Name + ".png", UriKind.Relative);
+                    bi.EndInit();
+
+                    img.Source = bi;
+                    img.Height = bi.PixelHeight;
+                    img.Width = bi.PixelWidth;
+                    img.Margin = new Thickness(10);
+
+                    if (i < 2)
+                        one.Children.Add(img);
+                    else
+                        two.Children.Add(img);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < nodes.Count; ++i)
+                {
+                    Image img = new Image();
+                    BitmapImage bi = new BitmapImage(new Uri("res/img/" + nodes[i].Name + ".png"));
+                    img.Source = bi;
+                    img.Height = bi.PixelHeight;
+                    img.Width = bi.PixelWidth;
+                    img.Margin = new Thickness(10);
+
+                    if (i < 3)
+                        one.Children.Add(img);
+                    else
+                        two.Children.Add(img);
+                }
+            }
+
+            body.Children.Add(one);
+            body.Children.Add(two);
+        }
+
+        private void MultiColumn()
         { 
             
         }

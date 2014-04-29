@@ -36,9 +36,19 @@ namespace SimuTraining
             //{
             //    Window auth = new AuthWindow();
             //    auth.Show();
-            
+
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("1"));
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("2"));
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("3"));
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("4"));
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("5"));
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("6"));
+            MessageBox.Show(AuthUtil.generateAuthrizationCode("7"));
+
             Window index = new IndexWindow(BreadCrumb.getRoot());
             index.Show();
+
+            
 
             base.OnStartup(e);
         }

@@ -38,7 +38,7 @@ namespace SimuTraining.util
             root.Description = null;
             root.Filelocation = null;
 
-            //addChildren(root, element);
+            addChildren(root, element);
         }
 
         private static void addChildren(Node node, XmlNode item)
@@ -62,6 +62,7 @@ namespace SimuTraining.util
             {
                 Node childNode = new Node();
                 childNode.Parent = node;
+                node.Children.Add(childNode);
                 addChildren(childNode, child);
             }
 
@@ -121,7 +122,10 @@ namespace SimuTraining.util
             set { children = value; }
         }
 
-        public Node() { }
+        public Node() 
+        {
+            children = new List<Node>();
+        }
 
 
     }

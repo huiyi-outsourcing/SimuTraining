@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Management;
 using System.Security.Cryptography;
 
-namespace SimuTraining.util
+namespace Authentication
 {
     public class AuthUtil
     {
