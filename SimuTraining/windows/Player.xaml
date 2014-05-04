@@ -7,22 +7,27 @@
              d:DesignHeight="548" d:DesignWidth="1280">
     <Grid VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80*" />
-            <ColumnDefinition Width="20*" />
+            <ColumnDefinition Width="70*" />
+            <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
         <!--
         <MediaElement Name="MediaPlayer" LoadedBehavior="Manual" Grid.Column="0" />
         -->
         <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
-            <MediaElement x:Name="mediaPlayer" LoadedBehavior="Manual" Width="896" Height="428" />
+            <Border>
+                <Border.Background>
+                    <ImageBrush ImageSource="../res/img/bg_video_end.png" />
+                </Border.Background>
+                <MediaElement x:Name="mediaPlayer" LoadedBehavior="Manual" Width="920" Height="428" />
+            </Border>
             <StackPanel Name="buttons" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="play" Content="播放" Click="play_Click" Margin="5 0 5 0"/>
                 <Button x:Name="fullscreen" Content="全屏" Click="fullscreen_Click" Margin="5 0 5 0" /> 
                 <Button x:Name="rewind" Content="重播" Click="rewind_Click" Margin="5 0 5 0" />
                 <Button x:Name="shutdown" Content="关闭" Click="shutdown_Click" Margin="5 0 5 0" />
                 <Button x:Name="pause" Content="暂停" Click="pause_Click" Margin="5 0 5 0" />
-                <Button Name="volume" Content="音量调节" Click="volume_Click" Margin="5 0 5 0" />
+                <Button Name="volume" Content="音量调节" Click="volume_Click" Margin="5 0 5 0" Width="110" />
             </StackPanel>
         </StackPanel>
         
@@ -32,11 +37,11 @@
                 <RowDefinition Height="85*" />
             </Grid.RowDefinitions>
             
-            <StackPanel Grid.Row="0" HorizontalAlignment="Left">
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center">
                 <Label Name="title" Content="TestTitle" />
             </StackPanel>
             
-            <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
                 <Label Name="description" Content="abc" />
             </StackPanel>
             
