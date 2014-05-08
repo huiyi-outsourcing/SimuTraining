@@ -53,8 +53,6 @@ namespace SimuTraining.util
                 String des = ConfigHolder.getInfo()[node.Name + ".d"];
                 if (!des.StartsWith("        "))
                     node.Description = "        " + des;
-
-                //node.Description = paragraph(ConfigHolder.getInfo()[node.Name + ".d"]);
             }
             else
             {
@@ -63,7 +61,7 @@ namespace SimuTraining.util
 
             if (node.Leaf && ConfigHolder.getInfo().ContainsKey(node.Name + ".f"))
             {
-                node.Filelocation = ConfigHolder.getInfo()[node.Name + ".f"];
+                node.Filelocation = "media/" + ConfigHolder.getInfo()[node.Name + ".f"];
             }
             else
             {

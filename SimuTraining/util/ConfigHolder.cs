@@ -26,7 +26,7 @@ namespace SimuTraining.util
         {
             // 视频页面信息
             info.Add("连、营抢救组的主要任务和救治原则.d", "");
-            info.Add("连、营抢救组的主要任务和救治原则.f", "media/test.mp4");
+            info.Add("连、营抢救组的主要任务和救治原则.f", "test.mp4");
             info.Add("分类.d", "");
             info.Add("分类.f", "");
             info.Add("后送.d", "");
@@ -110,7 +110,7 @@ namespace SimuTraining.util
             info.Add("绞棒止血法.d", "");
             info.Add("绞棒止血法.f", "");
             info.Add("卡式止血带止血法.d", "");
-            info.Add("卡式止血带止血法.f", "");
+            info.Add("卡式止血带止血法.f", "卡式止血带止血法.mp4");
             info.Add("屈臂加压止血法.d", "");
             info.Add("屈臂加压止血法.f", "");
             info.Add("三角巾说明.d", "");
