@@ -1,0 +1,35 @@
+﻿<Window x:Class="SimuTraining.windows.AuthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="战（现）场急救技术模拟训练系统" Height="752" Width="1280" WindowState="Maximized" Icon="../icon.ico">
+    <Window.Background>
+        <ImageBrush ImageSource="../res/img/main_bg.png" />
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0">
+            <Image Source="../res/img/label_title.png" Width="200"/> 
+            <Image Source="../res/img/head_title_second.png" 
+               Width="800"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Label Content="设备码：" />
+                <Label  Name="machine_code" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 20">
+                <Label Content="授权码：" />
+                <TextBox Name="auth_code" Width="300" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Content="授权" Name="authorize" Margin="20 0 20 0" Click="authorize_Click"></Button>
+                <Button Content="退出" Name="exit" Click="exit_Click"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

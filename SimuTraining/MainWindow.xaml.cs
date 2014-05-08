@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using SimuTraining.util;
+
 namespace SimuTraining
 {
     /// <summary>
@@ -24,5 +26,27 @@ namespace SimuTraining
         {
             InitializeComponent();
         }
+
+        private void mainPage_Click(object sender, RoutedEventArgs e)
+        {
+            // do nothing.. already in main window
+        }
+
+        private void return_Click(object sender, RoutedEventArgs e)
+        {
+            // return to login window
+            Window login = new windows.LoginWindow();
+            login.Show();
+            this.Close();
+        }
+
+        private void enterSimuTraining(object sender, MouseButtonEventArgs e)
+        {
+            Node root = BreadCrumb.getRoot();
+            Window index = new windows.IndexWindow(root);
+            index.Show();
+            this.Close();
+        }
+
     }
 }

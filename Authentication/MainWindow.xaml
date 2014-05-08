@@ -1,0 +1,27 @@
+﻿<Window x:Class="Authentication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="注册机" Height="350" Width="525"
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="img/main_bg_second.png" />
+    </Window.Background>
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        
+        <StackPanel Name="machinePanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="机器码：" />
+            <TextBox Name="machineCode" Width="200" />
+        </StackPanel>
+
+        <StackPanel Name="authPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+            <Label Content="授权码：" />
+            <TextBox Name="authCode" Width="200" IsEnabled="False"/>
+        </StackPanel>
+
+        <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="生成" Click="auth" Margin="10 0 10 0" Focusable="False" />
+            <Button Content="退出" Click="exit" Focusable="False" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>
