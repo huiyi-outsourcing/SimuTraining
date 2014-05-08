@@ -28,7 +28,6 @@ namespace SimuTraining.windows
 
             String id = AuthUtil.getMachineID();
             machine_code.Content = AuthUtil.getMachineID();
-            auth_code.Text = AuthUtil.generateAuthrizationCode(id);
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)

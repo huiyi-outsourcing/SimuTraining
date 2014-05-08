@@ -27,26 +27,16 @@ namespace SimuTraining
             //sp.Close(new TimeSpan(0, 0, 3));
             //Thread.Sleep(3000);
 
-            //if (confirmAuthorization())
-            //{
-            //    Window login = new LoginWindow();
-            //    login.Show();
-            //}
-            //else
-            //{
-            //    Window auth = new AuthWindow();
-            //    auth.Show();
-
-            Window index = new IndexWindow(BreadCrumb.getRoot());
-            index.Show();
-
-            //Window player = new FullScreenPlayer();
-            //player.Show();
-
-            //Window test = new TestWindow();
-            //test.Show();
-
-            
+            if (confirmAuthorization())
+            {
+                Window login = new LoginWindow();
+                login.Show();
+            }
+            else
+            {
+                Window auth = new AuthWindow();
+                auth.Show();
+            }
 
             base.OnStartup(e);
         }

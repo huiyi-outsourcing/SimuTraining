@@ -19,8 +19,8 @@
         </StackPanel>
 
         <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="生成" Click="auth" Margin="10 0 10 0"/>
-            <Button Content="退出" Click="exit" />
+            <Button Content="生成" Click="auth" Margin="10 0 10 0" Focusable="False" />
+            <Button Content="退出" Click="exit" Focusable="False" />
         </StackPanel>
 
     </StackPanel>
