@@ -50,11 +50,24 @@ namespace SimuTraining.util
 
             if (ConfigHolder.getInfo().ContainsKey(node.Name + ".d"))
             {
-                node.Description = ConfigHolder.getInfo()[node.Name + ".d"];
+                String des = ConfigHolder.getInfo()[node.Name + ".d"];
+                if (!des.StartsWith("        "))
+                    node.Description = "        " + des;
+
+                //node.Description = paragraph(ConfigHolder.getInfo()[node.Name + ".d"]);
             }
+            else
+            {
+                node.Description = "";
+            }
+
             if (node.Leaf && ConfigHolder.getInfo().ContainsKey(node.Name + ".f"))
             {
                 node.Filelocation = ConfigHolder.getInfo()[node.Name + ".f"];
+            }
+            else
+            {
+                node.Filelocation = "";
             }
 
             XmlNodeList list = item.ChildNodes;
@@ -68,6 +81,20 @@ namespace SimuTraining.util
 
         }
 
+        private static String paragraph(String input)
+        {
+            String result = "";
+
+            if (!input.StartsWith("        "))
+                result = "        " + input;
+
+            if (result.Length > 60)
+            { 
+                
+            }
+
+            return result;
+        }
     }
 
     public class Node

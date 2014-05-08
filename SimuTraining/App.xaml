@@ -11,7 +11,13 @@
             <Setter Property="FontFamily" Value="{Binding Source={StaticResource settings}, Path=fontFamily, Mode=OneWay}" />
             <Setter Property="Foreground" Value="White" />
         </Style>
-        
+
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="{Binding Source={StaticResource settings}, Path=fontSize, Mode=OneWay}" />
+            <Setter Property="FontFamily" Value="{Binding Source={StaticResource settings}, Path=fontFamily, Mode=OneWay}" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
         <Style TargetType="{x:Type StackPanel}">
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -24,7 +30,7 @@
         
         <Style TargetType="{x:Type Button}">
             <Setter Property="Width" Value="80" />
-            <Setter Property="Height" Value="45" />
+            <Setter Property="Height" Value="40" />
             <Setter Property="Background" Value="Green" />
             <Setter Property="FontFamily" Value="{Binding Source={StaticResource settings}, Path=fontFamily, Mode=OneWay}" />
             <Setter Property="FontSize" Value="{Binding Source={StaticResource settings}, Path=fontSize, Mode=OneWay}" />

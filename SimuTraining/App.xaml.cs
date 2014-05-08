@@ -40,6 +40,12 @@ namespace SimuTraining
             Window index = new IndexWindow(BreadCrumb.getRoot());
             index.Show();
 
+            //Window player = new FullScreenPlayer();
+            //player.Show();
+
+            //Window test = new TestWindow();
+            //test.Show();
+
             
 
             base.OnStartup(e);

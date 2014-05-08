@@ -89,6 +89,12 @@ namespace SimuTraining.windows
 
         private void refreshBody(Node node)
         {
+            if (body.Children.OfType<Player>().Count<Player>() > 0)
+            {
+                Player player = body.Children[0] as Player;
+                player.wpfMediaPlayer.close();
+            }
+
             body.Children.RemoveRange(0, body.Children.Count);
 
             if (node.Children == null || node.Children.Count == 0)
@@ -97,13 +103,21 @@ namespace SimuTraining.windows
             }
             else
             {
-                generateDirectoryPage();
+                if (!node.Leaf && node.Description.Length > 0)
+                {
+                    generateDescriptionPage();
+                }
+                else
+                {
+                    generateDirectoryPage();
+                }
             }
         }
 
         private void generateMediaPage()
-        { 
-            
+        {
+            Player player = new Player(current);
+            body.Children.Add(player);
         }
 
         private void generateDirectoryPage()
@@ -135,6 +149,26 @@ namespace SimuTraining.windows
             }
         }
 
+        private void generateDescriptionPage()
+        {
+            Grid grid = new Grid() { Margin = new Thickness(40) };
+            grid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(80) });
+            grid.RowDefinitions.Add(new RowDefinition());
+
+            Label title = new Label() { Content = current.Name };
+            TextBlock description = new TextBlock() { Text = current.Description, TextWrapping = TextWrapping.Wrap, LineHeight = 30 };
+            Grid.SetRow(title, 0);
+            Grid.SetRow(description, 1);
+
+            grid.Children.Add(title);
+            grid.Children.Add(description);
+
+            body.Children.Add(grid);
+
+            nextPage.Visibility = Visibility.Visible;
+        }
+
+        #region Column region
         private void OneRow()
         {
             StackPanel panel = new StackPanel();
@@ -255,14 +289,10 @@ namespace SimuTraining.windows
                 panel.Children.Add(three);
             body.Children.Add(panel);
         }
+        #endregion
 
         private Image createImage(Node node, int children)
         {
-            //if (!File.Exists("res/img/" + node.Name + ".png"))
-            //{
-            //    return null;
-            //}
-
             Image img = new Image();
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
@@ -330,6 +360,15 @@ namespace SimuTraining.windows
             {
                 refreshLayout(current);
             }
+        }
+
+        private void nextPage_Click(object sender, RoutedEventArgs e)
+        {
+            String tmp = current.Description;
+            current.Description = "";
+            nextPage.Visibility = Visibility.Hidden;
+            refreshBody(current);
+            current.Description = tmp;
         }
         #endregion
     }

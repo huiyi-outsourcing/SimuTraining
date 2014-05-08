@@ -1,0 +1,10 @@
+﻿<Window x:Class="SimuTraining.windows.TestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="752" Width="1280">
+    
+    <Grid x:Name="mainGrid">
+        <MediaElement Grid.Row="1" x:Name="mediaPlayer" LoadedBehavior="Manual" Width="896" Height="448" />
+        <Button x:Name="play" Content="Play" Click="play_Click" Width="50" Height="25" Margin="5"/>
+    </Grid>
+</Window>
