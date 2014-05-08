@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows;
 using System.IO;
 using Microsoft.Win32;
+using System.Text;
 
 using SimuTraining.windows;
 using SimuTraining.util;

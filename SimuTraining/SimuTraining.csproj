@@ -76,9 +76,6 @@
     <Compile Include="util\AuthUtil.cs" />
     <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\ConfigHolder.cs" />
-    <Compile Include="util\FileSecurityUtil.cs" />
-    <Compile Include="util\LayoutGenerator.cs" />
-    <Compile Include="util\NameHelper.cs" />
     <Compile Include="util\SettingsHolder.cs" />
     <Compile Include="util\VideoUtil.cs" />
     <Compile Include="windows\IndexWindow.xaml.cs">
