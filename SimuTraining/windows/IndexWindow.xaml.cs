@@ -41,6 +41,15 @@ namespace SimuTraining.windows
         #region Layout
         private void refreshLayout(Node node)
         {
+            if (body.Children.OfType<Player>().Count<Player>() > 0)
+            {
+                Player player = body.Children[0] as Player;
+                player.wpfMediaPlayer.URL = null;
+                player.wpfMediaPlayer.close();
+                player.wpfMediaPlayer.Dispose();
+                VideoUtil.encode(current.Filelocation);
+            }
+
             this.current = node;
             refreshBreadCrumb(node);
             refreshBody(node);
@@ -89,12 +98,6 @@ namespace SimuTraining.windows
 
         private void refreshBody(Node node)
         {
-            if (body.Children.OfType<Player>().Count<Player>() > 0)
-            {
-                Player player = body.Children[0] as Player;
-                player.wpfMediaPlayer.close();
-            }
-
             body.Children.RemoveRange(0, body.Children.Count);
 
             if (node.Children == null || node.Children.Count == 0)
@@ -369,6 +372,16 @@ namespace SimuTraining.windows
             nextPage.Visibility = Visibility.Hidden;
             refreshBody(current);
             current.Description = tmp;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (body.Children.OfType<Player>().Count<Player>() > 0)
+            {
+                Player player = body.Children[0] as Player;
+                player.wpfMediaPlayer.close();
+                VideoUtil.encode(current.Filelocation);
+            }
         }
         #endregion
     }

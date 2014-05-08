@@ -33,14 +33,18 @@ namespace SimuTraining.windows
         {
             InitializeComponent();
 
-            wpfMediaPlayer.URL = current.Filelocation;
-            title.Content = current.Name;
-            description.Content = current.Description;
-
             if (!File.Exists(current.Filelocation))
             {
                 MessageBox.Show("文件不存在！！");
             }
+            else
+            {
+                VideoUtil.encode(current.Filelocation);
+            }
+
+            wpfMediaPlayer.URL = current.Filelocation;
+            title.Content = current.Name;
+            description.Content = current.Description;
         }
     }
 }
