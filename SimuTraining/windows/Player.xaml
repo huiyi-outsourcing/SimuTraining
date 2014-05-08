@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mediaControl="clr-namespace:AxWMPLib;assembly=AxInterop.WMPLib"
              mc:Ignorable="d" 
              d:DesignHeight="548" d:DesignWidth="1280">
     <Grid VerticalAlignment="Top">
@@ -11,26 +12,10 @@
             <ColumnDefinition Width="30*" />
         </Grid.ColumnDefinitions>
 
-        <!--
-        <MediaElement Name="MediaPlayer" LoadedBehavior="Manual" Grid.Column="0" />
-        -->
-        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Top">
-            <Border>
-                <Border.Background>
-                    <ImageBrush ImageSource="../res/img/bg_video_end.png" />
-                </Border.Background>
-                <MediaElement x:Name="mediaPlayer" LoadedBehavior="Manual" Width="920" Height="428" />
-            </Border>
-            <StackPanel Name="buttons" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="play" Content="播放" Click="play_Click" Margin="5 0 5 0"/>
-                <Button x:Name="fullscreen" Content="全屏" Click="fullscreen_Click" Margin="5 0 5 0" /> 
-                <Button x:Name="rewind" Content="重播" Click="rewind_Click" Margin="5 0 5 0" />
-                <Button x:Name="shutdown" Content="关闭" Click="shutdown_Click" Margin="5 0 5 0" />
-                <Button x:Name="pause" Content="暂停" Click="pause_Click" Margin="5 0 5 0" />
-                <Button Name="volume" Content="音量调节" Click="volume_Click" Margin="5 0 5 0" Width="110" />
-            </StackPanel>
-        </StackPanel>
-        
+        <WindowsFormsHost Grid.Column="0">
+            <mediaControl:AxWindowsMediaPlayer x:Name="wpfMediaPlayer" Height="800"/>
+        </WindowsFormsHost>
+
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*" />
@@ -38,11 +23,11 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                <Label Name="title" Content="TestTitle" />
+                <Label Name="title" />
             </StackPanel>
             
             <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Label Name="description" Content="abc" />
+                <Label Name="description" />
             </StackPanel>
             
         </Grid>

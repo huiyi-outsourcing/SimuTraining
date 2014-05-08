@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.IO;
+
+using SimuTraining.util;
 
 namespace SimuTraining.windows
 {
@@ -24,37 +27,20 @@ namespace SimuTraining.windows
         public Player()
         {
             InitializeComponent();
-            mediaPlayer.Source = new Uri("media/test.mp4", UriKind.Relative);
         }
 
-        private void play_Click(object sender, RoutedEventArgs e)
+        public Player(Node current)
         {
-            mediaPlayer.Play();
-        }
+            InitializeComponent();
 
-        private void fullscreen_Click(object sender, RoutedEventArgs e)
-        {
+            wpfMediaPlayer.URL = current.Filelocation;
+            title.Content = current.Name;
+            description.Content = current.Description;
 
-        }
-
-        private void rewind_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void shutdown_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void pause_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void volume_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (!File.Exists(current.Filelocation))
+            {
+                MessageBox.Show("文件不存在！！");
+            }
         }
     }
 }
