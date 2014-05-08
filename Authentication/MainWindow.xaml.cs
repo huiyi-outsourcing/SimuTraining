@@ -23,6 +23,7 @@ namespace Authentication
         public MainWindow()
         {
             InitializeComponent();
+            machineCode.Text = AuthUtil.getMachineID();
         }
 
         private void auth(object sender, RoutedEventArgs e)
@@ -34,8 +35,7 @@ namespace Authentication
             }
             else
             {
-                String result = AuthUtil.generateAuthrizationCode(code);
-                authCode.Text = result.Substring(0, 8);
+                authCode.Text = AuthUtil.generateAuthrizationCode(code);
             }
         }
 

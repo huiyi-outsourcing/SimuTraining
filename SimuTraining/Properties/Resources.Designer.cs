@@ -59,14 +59,5 @@ namespace SimuTraining.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   查找类似  的本地化字符串。
-        /// </summary>
-        internal static string 首页description {
-            get {
-                return ResourceManager.GetString("首页description", resourceCulture);
-            }
-        }
     }
 }

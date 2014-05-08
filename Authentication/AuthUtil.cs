@@ -39,7 +39,7 @@ namespace Authentication
                 sb.Append(target[i].ToString("x2"));
             }
 
-            return sb.ToString();
+            return sb.ToString().Substring(0, 8);
     //        sbyte[] encryptionKeyBytesSigned =
     //target.Select(b => (sbyte)b).ToArray();
 
