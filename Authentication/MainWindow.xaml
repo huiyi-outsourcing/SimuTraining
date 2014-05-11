@@ -10,12 +10,12 @@
         
         <StackPanel Name="machinePanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label Content="机器码：" />
-            <TextBox Name="machineCode" Width="200" />
+            <TextBox Name="machineCode" Width="320" />
         </StackPanel>
 
         <StackPanel Name="authPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
             <Label Content="授权码：" />
-            <TextBox Name="authCode" Width="200" IsEnabled="False"/>
+            <TextBox Name="authCode" Width="320" IsEnabled="False"/>
         </StackPanel>
 
         <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
