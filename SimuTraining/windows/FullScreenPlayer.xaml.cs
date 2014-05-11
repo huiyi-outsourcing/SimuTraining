@@ -23,14 +23,15 @@ namespace SimuTraining.windows
     {
         private Node current;
         private bool userIsDraggingSlider = false;
-        MediaElement parent;
+        private MediaElement parent;
+        private Player ucPlayer;
 
         public FullScreenPlayer()
         {
             InitializeComponent();
         }
 
-        public FullScreenPlayer(Node current, MediaElement parent, TimeSpan now)
+        public FullScreenPlayer(Node current, Player ucPlayer, MediaElement parent, TimeSpan now)
         {
             InitializeComponent();
 
@@ -44,6 +45,7 @@ namespace SimuTraining.windows
             //}
             this.parent = parent;
             this.current = current;
+            this.ucPlayer = ucPlayer;
             player.Width = SystemParameters.VirtualScreenWidth;
             player.Height = SystemParameters.VirtualScreenHeight - 45;
             
@@ -111,11 +113,14 @@ namespace SimuTraining.windows
 
         private void fullscreen_Click_1(object sender, RoutedEventArgs e)
         {
+            player.Source = null;
+            player.Close();
             this.Close();
 
             TimeSpan ts = player.Position;
             parent.Position = ts;
             parent.Play();
+            ucPlayer.IsPlaying = true;
         }
 
         private void volumeSlider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)

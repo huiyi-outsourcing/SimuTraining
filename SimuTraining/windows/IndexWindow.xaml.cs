@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,11 +44,11 @@ namespace SimuTraining.windows
         {
             if (body.Children.OfType<Player>().Count<Player>() > 0)
             {
-                //Player player = body.Children[0] as Player;
-                //player.wpfMediaPlayer.URL = null;
-                //player.wpfMediaPlayer.close();
-                //player.wpfMediaPlayer.Dispose();
-                //VideoUtil.encode(current.Filelocation);
+                Player player = body.Children[0] as Player;
+                player.player.Stop();
+                player.player.Source = null;
+                Thread.Sleep(100);
+                VideoUtil.encode(current.Filelocation);
             }
 
             this.current = node;
@@ -348,9 +349,21 @@ namespace SimuTraining.windows
 
         private void mainPage_Click(object sender, RoutedEventArgs e)
         {
+            if (body.Children.OfType<Player>().Count<Player>() > 0)
+            {
+                Player player = body.Children[0] as Player;
+                player.player.Stop();
+                player.player.Source = null;
+                Thread.Sleep(100);
+                VideoUtil.encode(current.Filelocation);
+            }
+
+            body.Children.RemoveRange(0, body.Children.Count);
+
             Window main = new MainWindow();
             main.Show();
             this.Close();
+            GC.Collect();
         }
 
         private void return_Click(object sender, RoutedEventArgs e)
@@ -378,11 +391,20 @@ namespace SimuTraining.windows
         {
             if (body.Children.OfType<Player>().Count<Player>() > 0)
             {
-                //Player player = body.Children[0] as Player;
-                //player.wpfMediaPlayer.close();
-                //VideoUtil.encode(current.Filelocation);
+                Player player = body.Children[0] as Player;
+                player.player.Stop();
+                player.player.Source = null;
+                Thread.Sleep(100);
+                VideoUtil.encode(current.Filelocation);
             }
         }
         #endregion
+
+        public static readonly RoutedEvent closeEvent = EventManager.RegisterRoutedEvent("close", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(IndexWindow));
+    }
+
+    class closeEventArgs : RoutedEventArgs
+    {
+        public closeEventArgs(RoutedEvent routedEvent, object source) : base(routedEvent, source) { }
     }
 }

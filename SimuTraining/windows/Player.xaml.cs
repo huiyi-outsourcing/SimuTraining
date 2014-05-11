@@ -28,6 +28,19 @@ namespace SimuTraining.windows
     {
         private Node current;
         private bool userIsDraggingSlider = false;
+        private bool isPlaying = false;
+
+        public bool IsPlaying
+        {
+            get { return isPlaying; }
+            set { isPlaying = value; }
+        }
+
+        private void close(object sender, RoutedEventArgs e)
+        {
+            player.Stop();
+            player.Source = null;
+        }
 
         public Player()
         {
@@ -38,18 +51,16 @@ namespace SimuTraining.windows
         {
             InitializeComponent();
 
-            //if (!File.Exists(current.Filelocation))
-            //{
-            //    MessageBox.Show("文件不存在！！");
-            //}
-            //else
-            //{
-            //    VideoUtil.encode(current.Filelocation);
-            //}
+            if (!File.Exists(current.Filelocation))
+            {
+                MessageBox.Show("文件不存在！！");
+            }
+            else
+            {
+                VideoUtil.encode(current.Filelocation);
+            }
+
             this.current = current;
-            //wpfMediaPlayer.URL = current.Filelocation;
-            
-            //player.Play();
             title.Content = current.Name;
             description.Content = current.Description;
 
@@ -57,6 +68,8 @@ namespace SimuTraining.windows
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+
+            this.AddHandler(IndexWindow.closeEvent, new RoutedEventHandler(close));
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -71,28 +84,43 @@ namespace SimuTraining.windows
 
         private void play_Click_1(object sender, RoutedEventArgs e)
         {
-            if (player.Source == null)
+            if (!isPlaying)
             {
-                player.Source = new Uri(current.Filelocation, UriKind.Relative);
+                if (player.Source == null)
+                {
+                    player.Source = new Uri(current.Filelocation, UriKind.Relative);
+                }
+                player.Play();
+                isPlaying = true;
             }
-            player.Play();
         }
 
         private void rewind_Click_1(object sender, RoutedEventArgs e)
         {
-            player.Stop();
-            player.Play();
+            if (isPlaying)
+            {
+                player.Stop();
+                player.Play();
+            }
         }
 
         private void stop_Click_1(object sender, RoutedEventArgs e)
         {
-            player.Stop();
-            player.Source = null;
+            if (isPlaying)
+            {
+                player.Stop();
+                player.Source = null;
+                isPlaying = false;
+            }
         }
 
         private void pause_Click_1(object sender, RoutedEventArgs e)
         {
-            player.Pause();
+            if (isPlaying)
+            {
+                player.Pause();
+                isPlaying = false;
+            }
         }
 
         private void volume_Click_1(object sender, RoutedEventArgs e)
@@ -109,10 +137,14 @@ namespace SimuTraining.windows
 
         private void fullscreen_Click_1(object sender, RoutedEventArgs e)
         {
-            player.Pause();
-            TimeSpan ts = player.Position;
-            Window fullscreen = new FullScreenPlayer(current, player, ts);
-            fullscreen.Show();
+            if (isPlaying)
+            {
+                player.Pause();
+                TimeSpan ts = player.Position;
+                Window fullscreen = new FullScreenPlayer(current, this, player, ts);
+                fullscreen.Show();
+                isPlaying = false;
+            }
         }
 
         private void volumeSlider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -150,6 +182,7 @@ namespace SimuTraining.windows
         {
             player.Stop();
             player.Source = null;
+            isPlaying = false;
         }
     }
 }
