@@ -39,6 +39,7 @@ namespace SimuTraining.util
             fs.Flush();
             fs.Close();
             fs = null;
+            GC.Collect();
         }
     }
 }
