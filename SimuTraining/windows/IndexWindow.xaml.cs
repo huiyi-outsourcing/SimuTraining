@@ -43,11 +43,11 @@ namespace SimuTraining.windows
         {
             if (body.Children.OfType<Player>().Count<Player>() > 0)
             {
-                Player player = body.Children[0] as Player;
-                player.wpfMediaPlayer.URL = null;
-                player.wpfMediaPlayer.close();
-                player.wpfMediaPlayer.Dispose();
-                VideoUtil.encode(current.Filelocation);
+                //Player player = body.Children[0] as Player;
+                //player.wpfMediaPlayer.URL = null;
+                //player.wpfMediaPlayer.close();
+                //player.wpfMediaPlayer.Dispose();
+                //VideoUtil.encode(current.Filelocation);
             }
 
             this.current = node;
@@ -378,9 +378,9 @@ namespace SimuTraining.windows
         {
             if (body.Children.OfType<Player>().Count<Player>() > 0)
             {
-                Player player = body.Children[0] as Player;
-                player.wpfMediaPlayer.close();
-                VideoUtil.encode(current.Filelocation);
+                //Player player = body.Children[0] as Player;
+                //player.wpfMediaPlayer.close();
+                //VideoUtil.encode(current.Filelocation);
             }
         }
         #endregion
