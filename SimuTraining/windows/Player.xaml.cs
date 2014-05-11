@@ -51,6 +51,9 @@ namespace SimuTraining.windows
         {
             InitializeComponent();
 
+            player.Width = SystemParameters.WorkArea.Width;
+            player.Height = SystemParameters.VirtualScreenHeight - 270;
+
             if (!File.Exists(current.Filelocation))
             {
                 MessageBox.Show("文件不存在！！");
