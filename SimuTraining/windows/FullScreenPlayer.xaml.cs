@@ -1,40 +1,36 @@
-﻿using System;
+﻿using SimuTraining.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
-using System.IO;
-
-using SimuTraining.util;
 using System.Windows.Threading;
-using System.Windows.Controls.Primitives;
 
 namespace SimuTraining.windows
 {
     /// <summary>
-    /// MediaPlayer.xaml 的交互逻辑
+    /// FullScreenPlayer.xaml 的交互逻辑
     /// </summary>
-    public partial class Player : UserControl
+    public partial class FullScreenPlayer : Window
     {
         private Node current;
         private bool userIsDraggingSlider = false;
+        MediaElement parent;
 
-        public Player()
+        public FullScreenPlayer()
         {
             InitializeComponent();
         }
 
-        public Player(Node current)
+        public FullScreenPlayer(Node current, MediaElement parent, TimeSpan now)
         {
             InitializeComponent();
 
@@ -46,17 +42,23 @@ namespace SimuTraining.windows
             //{
             //    VideoUtil.encode(current.Filelocation);
             //}
+            this.parent = parent;
             this.current = current;
+            player.Width = SystemParameters.VirtualScreenWidth;
+            player.Height = SystemParameters.VirtualScreenHeight - 45;
+            
             //wpfMediaPlayer.URL = current.Filelocation;
             
             //player.Play();
-            title.Content = current.Name;
-            description.Content = current.Description;
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += timer_Tick;
             timer.Start();
+
+            player.Source = new Uri(current.Filelocation, UriKind.Relative);
+            player.Position = now;
+            player.Play();
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -109,10 +111,11 @@ namespace SimuTraining.windows
 
         private void fullscreen_Click_1(object sender, RoutedEventArgs e)
         {
-            player.Pause();
+            this.Close();
+
             TimeSpan ts = player.Position;
-            Window fullscreen = new FullScreenPlayer(current, player, ts);
-            fullscreen.Show();
+            parent.Position = ts;
+            parent.Play();
         }
 
         private void volumeSlider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)

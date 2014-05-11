@@ -1,23 +1,15 @@
-﻿<UserControl x:Class="SimuTraining.windows.Player"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d"
-             d:DesignHeight="548" d:DesignWidth="1280">
-    <Grid VerticalAlignment="Top" Name="topGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70*" />
-            <ColumnDefinition Width="30*" />
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Column="0" Orientation="Vertical" Name="playerPanel">
+﻿<Window x:Class="SimuTraining.windows.FullScreenPlayer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FullScreenPlayer" WindowState="Maximized" WindowStyle="None">
+    <Grid>
+        <StackPanel Orientation="Vertical" Name="playerPanel">
             <Border>
                 <Border.Background>
                     <ImageBrush ImageSource="../res/img/bg_video_end.png" />
                 </Border.Background>
                 <Grid MouseEnter="Grid_MouseEnter_1" MouseLeave="Grid_MouseLeave_1">
-                    <MediaElement Name="player" LoadedBehavior="Manual" Height="500" Width="896"  MediaEnded="player_MediaEnded" />
+                    <MediaElement Name="player" LoadedBehavior="Manual"  MediaEnded="player_MediaEnded" Stretch="Uniform"/>
                     <StatusBar VerticalAlignment="Bottom" Name="bar" Visibility="Hidden">
                         <StatusBar.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -39,10 +31,10 @@
                     </StatusBar>
                 </Grid>
             </Border>
-            
+
             <StackPanel Orientation="Horizontal">
                 <Button Name="play" Content="播放" Click="play_Click_1" Margin="0 0 10 0" />
-                <Button Name="fullscreen" Content="全屏" Click="fullscreen_Click_1" Margin="0 0 10 0" />
+                <Button Name="fullscreen" Content="退出全屏" Width="100" Click="fullscreen_Click_1" Margin="0 0 10 0" />
                 <Button Name="rewind" Content="重播" Click="rewind_Click_1" Margin="0 0 10 0" />
                 <Button Name="stop" Content="关闭" Click="stop_Click_1" Margin="0 0 10 0" />
                 <Button Name="pause" Content="暂停" Click="pause_Click_1" Margin="0 0 10 0" />
@@ -50,28 +42,5 @@
                 <Slider Name="volumeSlider" ValueChanged="volumeSlider_ValueChanged_1" Minimum="0" Maximum="1" Value="0.5" Width="200"  Height="30" Visibility="Hidden"/>
             </StackPanel>
         </StackPanel>
-        
-        <!--
-        <WindowsFormsHost Grid.Column="0">
-            <mediaControl:AxWindowsMediaPlayer x:Name="wpfMediaPlayer" Height="800"/>
-        </WindowsFormsHost>
-        -->
-        
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15*" />
-                <RowDefinition Height="85*" />
-            </Grid.RowDefinitions>
-            
-            <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                <Label Name="title" />
-            </StackPanel>
-            
-            <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Label Name="description" />
-            </StackPanel>
-            
-        </Grid>
-        
     </Grid>
-</UserControl>
+</Window>

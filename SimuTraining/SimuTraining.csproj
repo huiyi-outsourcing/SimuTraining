@@ -41,15 +41,6 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WMPControlLibrary\bin\Debug\AxInterop.WMPLib.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.WMPLib">
-      <HintPath>..\WMPControlLibrary\bin\Debug\Interop.WMPLib.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -79,6 +70,9 @@
     <Compile Include="util\ConfigHolder.cs" />
     <Compile Include="util\SettingsHolder.cs" />
     <Compile Include="util\VideoUtil.cs" />
+    <Compile Include="windows\FullScreenPlayer.xaml.cs">
+      <DependentUpon>FullScreenPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\IndexWindow.xaml.cs">
       <DependentUpon>IndexWindow.xaml</DependentUpon>
     </Compile>
@@ -107,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="windows\FullScreenPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\IndexWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -835,13 +833,6 @@
     <Content Include="res\img\鼻出血、鼻异物.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WMPControlLibrary\WMPControlLibrary.csproj">
-      <Project>{a4e2dc77-6c15-4939-b8b7-02d3ac9446e4}</Project>
-      <Name>WMPControlLibrary</Name>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
