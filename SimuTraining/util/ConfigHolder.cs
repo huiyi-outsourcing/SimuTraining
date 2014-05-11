@@ -25,7 +25,7 @@ namespace SimuTraining.util
         public static void init() 
         {
             // 视频页面信息
-            info.Add("连、营抢救组的主要任务和救治原则.d", "");
+            info.Add("连、营抢救组的主要任务和救治原则.d", "这是文字说明文字说明");
             info.Add("连、营抢救组的主要任务和救治原则.f", "test.mp4");
             info.Add("分类.d", "");
             info.Add("分类.f", "");
