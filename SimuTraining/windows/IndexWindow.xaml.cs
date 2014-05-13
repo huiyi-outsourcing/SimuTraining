@@ -130,7 +130,7 @@ namespace SimuTraining.windows
 
             if (current.Level == 0)
             {
-                TwoRow();
+                IndexPage();
             }
             else
             {
@@ -173,6 +173,40 @@ namespace SimuTraining.windows
         }
 
         #region Column region
+        private void IndexPage()
+        {
+            StackPanel panel = new StackPanel();
+            panel.Orientation = Orientation.Vertical;
+            panel.Margin = new Thickness(10, 10, 10, 10);
+            StackPanel one = new StackPanel();
+            one.Orientation = Orientation.Horizontal;
+            one.Margin = new Thickness(10, 40, 10, 40);
+            StackPanel two = new StackPanel();
+            two.Orientation = Orientation.Horizontal;
+            two.Margin = new Thickness(10, 40, 10, 40);
+
+            List<Node> nodes = current.Children;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                Image img = createImage(nodes[i], nodes.Count);
+                img.Margin = new Thickness(90, 0, 90, 0);
+
+                if (i < 2)
+                {
+                    one.Children.Add(img);
+                }
+                else
+                {
+                    two.Children.Add(img);
+                }
+            }
+
+            panel.Children.Add(one);
+            panel.Children.Add(two);
+            body.Children.Add(panel);
+        }
+
         private void OneRow()
         {
             StackPanel panel = new StackPanel();
@@ -198,10 +232,10 @@ namespace SimuTraining.windows
             panel.Margin = new Thickness(10, 10, 10, 10);
             StackPanel one = new StackPanel();
             one.Orientation = Orientation.Horizontal;
-            one.Margin = new Thickness(0, 20, 0, 20);
+            one.Margin = new Thickness(10, 20, 10, 20);
             StackPanel two = new StackPanel();
             two.Orientation = Orientation.Horizontal;
-            two.Margin = new Thickness(0, 20, 0, 20);
+            two.Margin = new Thickness(10, 20, 10, 20);
 
             List<Node> nodes = current.Children;
             if (current.Children.Count == 4)
@@ -360,10 +394,17 @@ namespace SimuTraining.windows
 
             body.Children.RemoveRange(0, body.Children.Count);
 
-            Window main = new MainWindow();
-            main.Show();
-            this.Close();
-            GC.Collect();
+            //Window main = new MainWindow();
+            //main.Show();
+            //this.Close();
+            //GC.Collect();
+            Node index = current;
+            while (index.Parent != null)
+            {
+                index = index.Parent;
+            }
+
+            refreshLayout(index);
         }
 
         private void return_Click(object sender, RoutedEventArgs e)
@@ -398,13 +439,35 @@ namespace SimuTraining.windows
                 VideoUtil.encode(current.Filelocation);
             }
         }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
         #endregion
 
-        public static readonly RoutedEvent closeEvent = EventManager.RegisterRoutedEvent("close", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(IndexWindow));
-    }
-
-    class closeEventArgs : RoutedEventArgs
-    {
-        public closeEventArgs(RoutedEvent routedEvent, object source) : base(routedEvent, source) { }
+        private void mainPage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back && current.Parent != null)
+            {
+                refreshLayout(current.Parent);
+            }
+            else if (e.Key == Key.D0 ||
+                     e.Key == Key.D1 ||
+                     e.Key == Key.D2 ||
+                     e.Key == Key.D3 ||
+                     e.Key == Key.D4 ||
+                     e.Key == Key.D5 ||
+                     e.Key == Key.D6 ||
+                     e.Key == Key.D7 ||
+                     e.Key == Key.D8 ||
+                     e.Key == Key.D9)
+            {
+                int input = Int32.Parse(e.Key.ToString().Substring(1));
+                input = input == 0 ? 10 : input;
+                if (input < current.Children.Count)
+                    refreshLayout(current.Children[input - 1]);
+            }
+        }
     }
 }

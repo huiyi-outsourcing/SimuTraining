@@ -15,7 +15,7 @@
 
         <StackPanel Name="authPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
             <Label Content="授权码：" />
-            <TextBox Name="authCode" Width="320" IsEnabled="False"/>
+            <TextBox Name="authCode" Width="320" IsReadOnly="True"/>
         </StackPanel>
 
         <StackPanel Name="buttonPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

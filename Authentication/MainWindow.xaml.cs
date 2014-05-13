@@ -23,7 +23,7 @@ namespace Authentication
         public MainWindow()
         {
             InitializeComponent();
-            //machineCode.Text = AuthUtil.getMachineID();
+            machineCode.Text = AuthUtil.getMachineID();
         }
 
         private void auth(object sender, RoutedEventArgs e)

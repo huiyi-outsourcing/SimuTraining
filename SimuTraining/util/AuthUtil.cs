@@ -17,7 +17,7 @@ namespace SimuTraining.util
         public static String getMachineID()
         {
             String mid = "";
-            String info = "talent" + getMacInfo() + getDiskID() + getCpuId();
+            String info = "talent" + getDiskID() + getCpuId();
 
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
             byte[] source = System.Text.Encoding.UTF8.GetBytes(info);

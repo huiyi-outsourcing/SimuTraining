@@ -85,6 +85,10 @@ namespace SimuTraining.windows
         private void rewind_Click_1(object sender, RoutedEventArgs e)
         {
             player.Stop();
+            if (player.Source == null)
+            {
+                player.Source = new Uri(current.Filelocation, UriKind.Relative);
+            }
             player.Play();
         }
 

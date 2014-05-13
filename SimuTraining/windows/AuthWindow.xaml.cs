@@ -43,9 +43,9 @@ namespace SimuTraining.windows
             if (AuthUtil.authorize(id, authcode))
             {
                 writeRegistry(authcode);
-                Window login = new LoginWindow();
+                Window index = new IndexWindow(BreadCrumb.getRoot());
                 this.Close();
-                login.Show();
+                index.Show();
             }
             else
             {

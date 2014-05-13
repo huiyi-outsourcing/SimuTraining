@@ -72,7 +72,13 @@ namespace SimuTraining.windows
             timer.Tick += timer_Tick;
             timer.Start();
 
-            this.AddHandler(IndexWindow.closeEvent, new RoutedEventHandler(close));
+            if (player.Source == null)
+            {
+                player.Source = new Uri(current.Filelocation, UriKind.Relative);
+            }
+            player.Play();
+            isPlaying = true;
+            //this.AddHandler(IndexWindow.closeEvent, new RoutedEventHandler(close));
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -100,30 +106,25 @@ namespace SimuTraining.windows
 
         private void rewind_Click_1(object sender, RoutedEventArgs e)
         {
-            if (isPlaying)
+            player.Stop();
+            if (player.Source == null)
             {
-                player.Stop();
-                player.Play();
+                player.Source = new Uri(current.Filelocation, UriKind.Relative);
             }
+            player.Play();
         }
 
         private void stop_Click_1(object sender, RoutedEventArgs e)
         {
-            if (isPlaying)
-            {
-                player.Stop();
-                player.Source = null;
-                isPlaying = false;
-            }
+            player.Stop();
+            player.Source = null;
+            isPlaying = false;
         }
 
         private void pause_Click_1(object sender, RoutedEventArgs e)
         {
-            if (isPlaying)
-            {
-                player.Pause();
-                isPlaying = false;
-            }
+            player.Pause();
+            isPlaying = false;
         }
 
         private void volume_Click_1(object sender, RoutedEventArgs e)
@@ -143,11 +144,12 @@ namespace SimuTraining.windows
             if (isPlaying)
             {
                 player.Pause();
-                TimeSpan ts = player.Position;
-                Window fullscreen = new FullScreenPlayer(current, this, player, ts);
-                fullscreen.Show();
-                isPlaying = false;
             }
+
+            TimeSpan ts = player.Position;
+            Window fullscreen = new FullScreenPlayer(current, this, player, ts);
+            fullscreen.Show();
+            isPlaying = false;
         }
 
         private void volumeSlider_ValueChanged_1(object sender, RoutedPropertyChangedEventArgs<double> e)
