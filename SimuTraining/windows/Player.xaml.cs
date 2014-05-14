@@ -54,6 +54,8 @@ namespace SimuTraining.windows
             player.Width = SystemParameters.WorkArea.Width;
             player.Height = SystemParameters.VirtualScreenHeight - 270;
 
+            desViewer.Height = (SystemParameters.VirtualScreenHeight - 270) * 0.85;
+
             if (!File.Exists(current.Filelocation))
             {
                 MessageBox.Show("文件不存在！！");
@@ -65,7 +67,10 @@ namespace SimuTraining.windows
 
             this.current = current;
             title.Content = current.Name;
-            description.Content = current.Description;
+            title.FontWeight = FontWeights.Bold;
+
+            TextBlockHelper.formatTextBlock(description, current.Description);
+            
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);

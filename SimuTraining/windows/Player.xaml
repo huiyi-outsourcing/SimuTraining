@@ -56,7 +56,6 @@
             <mediaControl:AxWindowsMediaPlayer x:Name="wpfMediaPlayer" Height="800"/>
         </WindowsFormsHost>
         -->
-        
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*" />
@@ -68,7 +67,9 @@
             </StackPanel>
             
             <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
-                <Label Name="description" />
+                <ScrollViewer Name="desViewer" VerticalScrollBarVisibility="Auto">
+                    <TextBlock Name="description" TextWrapping="Wrap" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="20"/>
+                </ScrollViewer>
             </StackPanel>
             
         </Grid>

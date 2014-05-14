@@ -72,6 +72,7 @@
     <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\ConfigHolder.cs" />
     <Compile Include="util\SettingsHolder.cs" />
+    <Compile Include="util\TextBlockHelper.cs" />
     <Compile Include="util\VideoUtil.cs" />
     <Compile Include="windows\FullScreenPlayer.xaml.cs">
       <DependentUpon>FullScreenPlayer.xaml</DependentUpon>

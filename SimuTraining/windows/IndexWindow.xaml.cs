@@ -160,12 +160,18 @@ namespace SimuTraining.windows
             grid.RowDefinitions.Add(new RowDefinition());
 
             Label title = new Label() { Content = current.Name };
+            ScrollViewer sv = new ScrollViewer();
             TextBlock description = new TextBlock() { Text = current.Description, TextWrapping = TextWrapping.Wrap, LineHeight = 30 };
+            ScrollViewer.SetCanContentScroll(description, true);
+            ScrollViewer.SetVerticalScrollBarVisibility(description, ScrollBarVisibility.Auto);
+            ScrollViewer.SetHorizontalScrollBarVisibility(description, ScrollBarVisibility.Disabled);
+
+            sv.Content = description;
             Grid.SetRow(title, 0);
-            Grid.SetRow(description, 1);
+            Grid.SetRow(sv, 1);
 
             grid.Children.Add(title);
-            grid.Children.Add(description);
+            grid.Children.Add(sv);
 
             body.Children.Add(grid);
 
@@ -442,7 +448,10 @@ namespace SimuTraining.windows
 
         private void exit_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("您确定要退出本程序吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
         }
         #endregion
 
@@ -467,6 +476,13 @@ namespace SimuTraining.windows
                 input = input == 0 ? 10 : input;
                 if (input < current.Children.Count)
                     refreshLayout(current.Children[input - 1]);
+            }
+            else if (e.Key == Key.Escape)
+            {
+                if (MessageBox.Show("您确定要退出本程序吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    this.Close();
+                }
             }
         }
     }
