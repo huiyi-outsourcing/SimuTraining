@@ -160,7 +160,7 @@ namespace SimuTraining.windows
             grid.RowDefinitions.Add(new RowDefinition());
 
             Label title = new Label() { Content = current.Name };
-            ScrollViewer sv = new ScrollViewer();
+            ScrollViewer sv = new ScrollViewer() { VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
             TextBlock description = new TextBlock() { Text = current.Description, TextWrapping = TextWrapping.Wrap, LineHeight = 30 };
             ScrollViewer.SetCanContentScroll(description, true);
             ScrollViewer.SetVerticalScrollBarVisibility(description, ScrollBarVisibility.Auto);
