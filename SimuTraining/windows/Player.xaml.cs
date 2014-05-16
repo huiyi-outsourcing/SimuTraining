@@ -51,7 +51,9 @@ namespace SimuTraining.windows
         {
             InitializeComponent();
 
-            player.Width = SystemParameters.WorkArea.Width;
+            playerPanel.Width = SystemParameters.VirtualScreenWidth * 0.7;
+            playerPanel.Height = SystemParameters.VirtualScreenHeight - 200;
+            player.Width = SystemParameters.VirtualScreenWidth * 0.7;
             player.Height = SystemParameters.VirtualScreenHeight - 270;
 
             desViewer.Height = (SystemParameters.VirtualScreenHeight - 270) * 0.85;
@@ -70,12 +72,6 @@ namespace SimuTraining.windows
             title.FontWeight = FontWeights.Bold;
 
             TextBlockHelper.formatTextBlock(description, current.Description);
-            
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += timer_Tick;
-            timer.Start();
 
             if (player.Source == null)
             {
@@ -83,6 +79,11 @@ namespace SimuTraining.windows
             }
             player.Play();
             isPlaying = true;
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
             //this.AddHandler(IndexWindow.closeEvent, new RoutedEventHandler(close));
         }
 

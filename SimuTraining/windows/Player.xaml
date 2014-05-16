@@ -63,7 +63,7 @@
             </Grid.RowDefinitions>
             
             <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                <Label Name="title" />
+                <Label Name="title" FontSize="35" />
             </StackPanel>
             
             <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">

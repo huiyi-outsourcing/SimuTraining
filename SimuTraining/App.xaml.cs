@@ -28,6 +28,8 @@ namespace SimuTraining
             //sp.Close(new TimeSpan(0, 0, 3));
             //Thread.Sleep(3000);
 
+            //VideoUtil.encode("media/test.mp4");
+
             if (confirmAuthorization())
             {
                 Window index = new IndexWindow(BreadCrumb.getRoot());

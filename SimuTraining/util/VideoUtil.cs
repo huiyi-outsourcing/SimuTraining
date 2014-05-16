@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows;
 
 namespace SimuTraining.util
 {
@@ -15,6 +16,7 @@ namespace SimuTraining.util
         {   
             if (!File.Exists(name))
             {
+                MessageBox.Show("File not found!");
                 return;
             }
 

@@ -30,7 +30,7 @@ namespace SimuTraining.util
             info.Add("伤病员分类.d", "适用范围：人体各部位出血\n操作方法：测试测试测试测试测试测试测试测试测试测试测试测试测试\n要领：测试测试");
             info.Add("分类.f", "");
             info.Add("后送.d", "");
-            info.Add("后送.f", "");
+            info.Add("后送.f", "后送.mp4");
             info.Add("分类标识.d", "");
             info.Add("分类标识.f", "");
             info.Add("处置顺序.d", "");
