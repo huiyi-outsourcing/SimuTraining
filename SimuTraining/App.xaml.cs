@@ -23,12 +23,10 @@ namespace SimuTraining
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            //SplashScreen sp = new SplashScreen("res/img/welcome.png");
+            //SplashScreen sp = new SplashScreen(System.Environment.CurrentDirectory + "\\res\\img\\main_bg.png");
             //sp.Show(true, true);
             //sp.Close(new TimeSpan(0, 0, 3));
             //Thread.Sleep(3000);
-
-            //VideoUtil.encode("media/test.mp4");
 
             if (confirmAuthorization())
             {

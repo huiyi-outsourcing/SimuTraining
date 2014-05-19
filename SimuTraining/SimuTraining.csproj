@@ -152,6 +152,9 @@
     <Content Include="res\img\comp_4_8.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <SplashScreen Include="res\img\welc.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </SplashScreen>
     <Content Include="res\img\灾害事故现场急救.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -245,9 +248,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\img\position_pre.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="res\img\welcome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\img\“T”字型夹板固定法.png">
