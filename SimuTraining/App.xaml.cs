@@ -13,6 +13,7 @@ using System.Text;
 using SimuTraining.windows;
 using SimuTraining.util;
 using System.Reflection;
+using System.Security.AccessControl;
 
 namespace SimuTraining
 {
@@ -23,11 +24,6 @@ namespace SimuTraining
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            //SplashScreen sp = new SplashScreen(System.Environment.CurrentDirectory + "\\res\\img\\main_bg.png");
-            //sp.Show(true, true);
-            //sp.Close(new TimeSpan(0, 0, 3));
-            //Thread.Sleep(3000);
-
             if (confirmAuthorization())
             {
                 Window index = new IndexWindow(BreadCrumb.getRoot());

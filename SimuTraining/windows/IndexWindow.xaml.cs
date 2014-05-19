@@ -47,6 +47,7 @@ namespace SimuTraining.windows
                 Player player = body.Children[0] as Player;
                 player.player.Stop();
                 player.player.Source = null;
+                GC.Collect();
                 Thread.Sleep(100);
                 if (File.Exists(current.Filelocation))
                 {
@@ -104,9 +105,16 @@ namespace SimuTraining.windows
         {
             body.Children.RemoveRange(0, body.Children.Count);
 
-            if (node.Children == null || node.Children.Count == 0)
+            if (node.Leaf)
             {
-                generateMediaPage();
+                if (node.ExceptionDescription.Length > 0)
+                {
+                    generateDescriptionPage();
+                }
+                else
+                {
+                    generateMediaPage();
+                }
             }
             else
             {
@@ -164,7 +172,15 @@ namespace SimuTraining.windows
 
             Label title = new Label() { Content = current.Name };
             ScrollViewer sv = new ScrollViewer() { VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
-            TextBlock description = new TextBlock() { Text = current.Description, TextWrapping = TextWrapping.Wrap, LineHeight = 30 };
+            TextBlock description = new TextBlock() { TextWrapping = TextWrapping.Wrap, LineHeight = 30 };
+            if (current.Leaf)
+            {
+                description.Text = current.ExceptionDescription;
+            }
+            else
+            {
+                description.Text = current.Description;
+            }
             ScrollViewer.SetCanContentScroll(description, true);
             ScrollViewer.SetVerticalScrollBarVisibility(description, ScrollBarVisibility.Auto);
             ScrollViewer.SetHorizontalScrollBarVisibility(description, ScrollBarVisibility.Disabled);
@@ -343,7 +359,7 @@ namespace SimuTraining.windows
             Image img = new Image();
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri("res/img/" + node.Name + ".png", UriKind.Relative);
+            bi.UriSource = new Uri("res/img/" + node.ImageName + ".png", UriKind.Relative);
             bi.EndInit();
             bi.Freeze();
 
@@ -430,11 +446,22 @@ namespace SimuTraining.windows
 
         private void nextPage_Click(object sender, RoutedEventArgs e)
         {
-            String tmp = current.Description;
-            current.Description = "";
-            nextPage.Visibility = Visibility.Hidden;
-            refreshBody(current);
-            current.Description = tmp;
+            if (current.Leaf)
+            {
+                String tmp = current.ExceptionDescription;
+                current.ExceptionDescription = "";
+                nextPage.Visibility = Visibility.Hidden;
+                refreshBody(current);
+                current.ExceptionDescription = tmp;
+            }
+            else
+            {
+                String tmp = current.Description;
+                current.Description = "";
+                nextPage.Visibility = Visibility.Hidden;
+                refreshBody(current);
+                current.Description = tmp;
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

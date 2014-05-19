@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 
 using SimuTraining.util;
+using System.Security.AccessControl;
 
 namespace SimuTraining.windows
 {
@@ -27,7 +28,7 @@ namespace SimuTraining.windows
             InitializeComponent();
 
             String id = AuthUtil.getMachineID();
-            machine_code.Content = AuthUtil.getMachineID();
+            machine_code.Text = AuthUtil.getMachineID();
         }
 
         private void exit_Click(object sender, RoutedEventArgs e)
@@ -38,7 +39,7 @@ namespace SimuTraining.windows
         private void authorize_Click(object sender, RoutedEventArgs e)
         {
             String authcode = auth_code.Text;
-            String id = machine_code.Content.ToString();
+            String id = machine_code.Text.ToString();
 
             if (AuthUtil.authorize(id, authcode))
             {
@@ -55,9 +56,21 @@ namespace SimuTraining.windows
 
         private void writeRegistry(String authcode)
         {
+            RegistrySecurity rs = new RegistrySecurity();
+
+            // Allow the current user to read and delete the key. 
+            //
+            string user = Environment.UserDomainName + "\\" + Environment.UserName;
+
+            rs.AddAccessRule(new RegistryAccessRule(user, 
+            RegistryRights.ReadKey | RegistryRights.Delete, 
+            InheritanceFlags.None, 
+            PropagationFlags.None, 
+            AccessControlType.Allow));
+
             Registry.LocalMachine.CreateSubKey("SOFTWARE\\SimuTraining", RegistryKeyPermissionCheck.ReadWriteSubTree);
 
-            RegistryKey SimuTraining = Registry.LocalMachine.OpenSubKey("SOFTWARE\\SimuTraining", true);
+            RegistryKey SimuTraining = Registry.LocalMachine.CreateSubKey("SOFTWARE\\SimuTraining");
             SimuTraining.SetValue("authcode", authcode);
             SimuTraining.Close();
         }

@@ -292,7 +292,7 @@
         </Node>
     </Node>
     
-    <Node name="战术急救装备使用" level="1" leaf="true">
+    <Node name="战术急救装备使用" level="1" leaf="false">
         <Node name="口咽呼吸管通气法" level="2" leaf="true" />
         <Node name="充气止血带止血法" level="2" leaf="true" />
         <Node name="卡式止血带止血法" level="2" leaf="true" />

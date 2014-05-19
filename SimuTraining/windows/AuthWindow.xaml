@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <Label Content="设备码：" />
-                <Label  Name="machine_code" />
+                <TextBox Name="machine_code" Width="300" IsReadOnly="True" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 20">
                 <Label Content="授权码：" />

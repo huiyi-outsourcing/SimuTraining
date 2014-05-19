@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.IO;
+using System.Diagnostics;
 
 using SimuTraining.util;
 using System.Windows.Threading;
@@ -55,6 +56,8 @@ namespace SimuTraining.windows
             playerPanel.Height = SystemParameters.VirtualScreenHeight - 200;
             player.Width = SystemParameters.VirtualScreenWidth * 0.7;
             player.Height = SystemParameters.VirtualScreenHeight - 270;
+
+            player.CacheMode = new BitmapCache() { };
 
             desViewer.Height = (SystemParameters.VirtualScreenHeight - 270) * 0.85;
 

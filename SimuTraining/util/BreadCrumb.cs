@@ -38,14 +38,39 @@ namespace SimuTraining.util
             root.Description = null;
             root.Filelocation = null;
 
-            addChildren(root, element);
+            addChildren(root, element, 0);
         }
 
-        private static void addChildren(Node node, XmlNode item)
+        private static void addChildren(Node node, XmlNode item, int index)
         {
             node.Name = item.Attributes["name"].Value.ToString();
             String level = item.Attributes["level"].Value.ToString();
             node.Level = Convert.ToInt32(item.Attributes["level"].Value.ToString());
+
+            if (node.Level == 1)
+            {
+                if (node.Name.Equals("组织指挥"))
+                {
+                    node.ImageName = "org";
+                }
+                else if (node.Name.Equals("基本技术"))
+                {
+                    node.ImageName = "basic";
+                }
+                else if (node.Name.Equals("技能应用"))
+                {
+                    node.ImageName = "comp";
+                }
+                else
+                {
+                    node.ImageName = "emerg";
+                }
+            }
+            else if (node.Level > 1)
+            {
+                node.ImageName = node.Parent.ImageName + "_" + index;
+            }
+            
             node.Leaf = item.Attributes["leaf"].Value.ToString().Equals("true");
 
             if (ConfigHolder.getInfo().ContainsKey(node.Name + ".d"))
@@ -59,6 +84,16 @@ namespace SimuTraining.util
                 node.Description = "";
             }
 
+            if (ConfigHolder.getInfo().ContainsKey(node.Name + ".dd"))
+            {
+                String des = ConfigHolder.getInfo()[node.Name + ".dd"];
+                node.ExceptionDescription = des;
+            }
+            else
+            {
+                node.ExceptionDescription = "";
+            }
+
             if (node.Leaf && ConfigHolder.getInfo().ContainsKey(node.Name + ".f"))
             {
                 node.Filelocation = "media/" + ConfigHolder.getInfo()[node.Name + ".f"];
@@ -69,12 +104,13 @@ namespace SimuTraining.util
             }
 
             XmlNodeList list = item.ChildNodes;
-            foreach (XmlNode child in list)
+
+            for (int i = 1; i <= list.Count; ++i)
             {
                 Node childNode = new Node();
                 childNode.Parent = node;
                 node.Children.Add(childNode);
-                addChildren(childNode, child);
+                addChildren(childNode, list[i-1], i);
             }
 
         }
@@ -99,6 +135,8 @@ namespace SimuTraining.util
     {
         private String name;
         private String description;
+        private String exceptionDescription;
+        private String imageName;
         private String filelocation;
         private int level;
         private Boolean leaf;
@@ -115,6 +153,18 @@ namespace SimuTraining.util
         {
             get { return description; }
             set { description = value; }
+        }
+
+        public String ExceptionDescription
+        {
+            get { return exceptionDescription; }
+            set { exceptionDescription = value; }
+        }
+
+        public String ImageName
+        {
+            get { return imageName; }
+            set { imageName = value; }
         }
 
         public String Filelocation
