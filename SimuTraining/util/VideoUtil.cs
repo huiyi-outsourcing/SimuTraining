@@ -16,7 +16,7 @@ namespace SimuTraining.util
         {   
             if (!File.Exists(name))
             {
-                MessageBox.Show("File not found!");
+                MessageBox.Show("文件不存在。");
                 return;
             }
 
