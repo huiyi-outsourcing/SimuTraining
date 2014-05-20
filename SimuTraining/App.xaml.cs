@@ -35,6 +35,7 @@ namespace SimuTraining
                 auth.Show();
             }
 
+
             base.OnStartup(e);
 
             //Window index = new IndexWindow(BreadCrumb.getRoot());

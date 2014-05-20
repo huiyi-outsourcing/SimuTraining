@@ -12,12 +12,12 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Orientation="Vertical" Name="playerPanel">
-            <Border>
+            <Border Name="background">
                 <Border.Background>
                     <ImageBrush ImageSource="../res/img/bg_video_end.png" />
                 </Border.Background>
                 <Grid MouseEnter="Grid_MouseEnter_1" MouseLeave="Grid_MouseLeave_1">
-                    <MediaElement Name="player" LoadedBehavior="Manual"  MediaEnded="player_MediaEnded" Stretch="Fill"/>
+                    <MediaElement Name="player" LoadedBehavior="Manual"  MediaEnded="player_MediaEnded" Stretch="Fill" ScrubbingEnabled="True"/>
                     <StatusBar VerticalAlignment="Bottom" Name="bar" Visibility="Hidden">
                         <StatusBar.ItemsPanel>
                             <ItemsPanelTemplate>

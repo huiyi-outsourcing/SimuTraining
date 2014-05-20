@@ -48,14 +48,14 @@ namespace SimuTraining.windows
             InitializeComponent();
         }
 
-        public Player(Node current)
+        public Player(Node current, ProgressBar pb)
         {
             InitializeComponent();
 
             playerPanel.Width = SystemParameters.VirtualScreenWidth * 0.7;
             playerPanel.Height = SystemParameters.VirtualScreenHeight - 200;
             player.Width = SystemParameters.VirtualScreenWidth * 0.7;
-            player.Height = SystemParameters.VirtualScreenHeight - 270;
+            player.Height = SystemParameters.VirtualScreenHeight - 260;
 
             player.CacheMode = new BitmapCache() { };
 
@@ -194,8 +194,15 @@ namespace SimuTraining.windows
 
         private void player_MediaEnded(object sender, RoutedEventArgs e)
         {
-            player.Stop();
-            player.Source = null;
+            TimeSpan one = TimeSpan.FromSeconds(1);
+
+            App.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                TimeSpan now = player.NaturalDuration.TimeSpan.Subtract(one);
+                player.Position = now;
+            }));
+            player.Pause();
+
             isPlaying = false;
         }
     }

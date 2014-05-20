@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Diagnostics;
+using System.ComponentModel;
 
 using SimuTraining.util;
 
@@ -129,10 +132,28 @@ namespace SimuTraining.windows
             }
         }
 
+
+        ProgressBar pb = null;
         private void generateMediaPage()
         {
-            Player player = new Player(current);
-            body.Children.Add(player);
+            Label progress = new Label();
+            progress.Content = "视频正在加载中，请稍后...";
+            progress.HorizontalAlignment = HorizontalAlignment.Center;
+            progress.VerticalAlignment = VerticalAlignment.Center;
+            body.Children.Add(progress);
+            
+            Thread thread = new Thread(run);
+            thread.Start();
+        }
+
+        private void run()
+        {
+            App.Current.Dispatcher.Invoke(new Action(() => {
+                Player player = new Player(current, pb);
+                body.Children.RemoveRange(0, body.Children.Count);
+                body.Children.Add(player);
+                
+            }));
         }
 
         private void generateDirectoryPage()
