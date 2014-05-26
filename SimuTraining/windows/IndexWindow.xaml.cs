@@ -493,7 +493,10 @@ namespace SimuTraining.windows
                 player.player.Stop();
                 player.player.Source = null;
                 Thread.Sleep(100);
-                VideoUtil.encode(current.Filelocation);
+                if (File.Exists(current.Filelocation))
+                {
+                    VideoUtil.encode(current.Filelocation);
+                }
             }
         }
 
