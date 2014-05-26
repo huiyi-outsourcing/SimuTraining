@@ -49,15 +49,15 @@ namespace SimuTraining.util
 
             if (node.Level == 1)
             {
-                if (node.Name.Equals("组织指挥"))
+                if (node.Name.Equals("急救技术"))
                 {
                     node.ImageName = "org";
                 }
-                else if (node.Name.Equals("基本技术"))
+                else if (node.Name.Equals("特殊武器伤防护技术"))
                 {
                     node.ImageName = "basic";
                 }
-                else if (node.Name.Equals("技能应用"))
+                else if (node.Name.Equals("医学洗消技术"))
                 {
                     node.ImageName = "comp";
                 }
