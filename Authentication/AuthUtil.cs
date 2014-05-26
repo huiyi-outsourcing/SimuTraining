@@ -17,7 +17,7 @@ namespace Authentication
         public static String getMachineID()
         {
             String mid = "";
-            String info = "talent" + getDiskID() + getCpuId();
+            String info = "talent" + getBIOSerialNumber() + getMotherBoardSerialNumber();
 
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
             byte[] source = System.Text.Encoding.UTF8.GetBytes(info);
@@ -46,6 +46,36 @@ namespace Authentication
     //        return Encoding.UTF8.GetString(encryptionKeyBytesSigned);
 
 //            return Convert.ToBase64String(encryptionKeyBytesSigned).Substring(0, 8);
+        }
+
+        public static String getBIOSerialNumber()
+        {
+            string bios = string.Empty;
+
+            ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_BIOS");
+            ManagementObjectCollection moc = mos.Get();
+
+            foreach (ManagementObject mo in moc)
+            {
+                bios = mo["SerialNumber"].ToString();
+            }
+
+            return bios;
+        }
+
+        public static String getMotherBoardSerialNumber()
+        {
+            string motherBoard = string.Empty;
+
+            ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
+            ManagementObjectCollection moc = mos.Get();
+
+            foreach (ManagementObject mo in moc)
+            {
+                motherBoard = mo["SerialNumber"].ToString();
+            }
+
+            return motherBoard;
         }
 
         public static Boolean authorize(String id, String authcode)

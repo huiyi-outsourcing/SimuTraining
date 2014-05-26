@@ -10,14 +10,14 @@ namespace SimuTraining.util
 {
     public class AuthUtil
     {
-        private AuthUtil() 
-        { 
+        private AuthUtil()
+        {
         }
 
         public static String getMachineID()
         {
             String mid = "";
-            String info = "talent" + getDiskID() + getCpuId();
+            String info = "talent" + getBIOSerialNumber() + getMotherBoardSerialNumber();
 
             MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
             byte[] source = System.Text.Encoding.UTF8.GetBytes(info);
@@ -35,17 +35,47 @@ namespace SimuTraining.util
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < target.Length; ++i)
-            { 
+            {
                 sb.Append(target[i].ToString("x2"));
             }
 
             return sb.ToString().Substring(0, 8);
-    //        sbyte[] encryptionKeyBytesSigned =
-    //target.Select(b => (sbyte)b).ToArray();
+            //        sbyte[] encryptionKeyBytesSigned =
+            //target.Select(b => (sbyte)b).ToArray();
 
-    //        return Encoding.UTF8.GetString(encryptionKeyBytesSigned);
+            //        return Encoding.UTF8.GetString(encryptionKeyBytesSigned);
 
-//            return Convert.ToBase64String(encryptionKeyBytesSigned).Substring(0, 8);
+            //            return Convert.ToBase64String(encryptionKeyBytesSigned).Substring(0, 8);
+        }
+
+        public static String getBIOSerialNumber()
+        {
+            string bios = string.Empty;
+
+            ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_BIOS");
+            ManagementObjectCollection moc = mos.Get();
+
+            foreach (ManagementObject mo in moc)
+            {
+                bios = mo["SerialNumber"].ToString();
+            }
+
+            return bios;
+        }
+
+        public static String getMotherBoardSerialNumber()
+        {
+            string motherBoard = string.Empty;
+
+            ManagementObjectSearcher mos = new ManagementObjectSearcher("SELECT * FROM Win32_BaseBoard");
+            ManagementObjectCollection moc = mos.Get();
+
+            foreach (ManagementObject mo in moc)
+            {
+                motherBoard = mo["SerialNumber"].ToString();
+            }
+
+            return motherBoard;
         }
 
         public static Boolean authorize(String id, String authcode)
@@ -55,7 +85,7 @@ namespace SimuTraining.util
             return authcode.Equals(rightcode);
         }
 
-        private static String getMacInfo() 
+        private static String getMacInfo()
         {
             string mac = "";
             ManagementClass mc = new ManagementClass("Win32_NetworkAdapterConfiguration");
@@ -111,7 +141,7 @@ namespace SimuTraining.util
             }
         }
 
-        private static String getCpuId() 
+        private static String getCpuId()
         {
             string cpuInfo = "";
             ManagementClass mc = new ManagementClass("Win32_Processor");
