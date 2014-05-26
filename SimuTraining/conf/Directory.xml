@@ -221,13 +221,13 @@
     
     <Node name="技能应用" level="1" leaf="false">
         <Node name="各部位伤的战（现）场急救" level="2" leaf="false">
-            <Node name="颅脑损伤" level="3" leaf="false">
+            <Node name="颅脑损伤" level="3" leaf="true">
             </Node>
             <Node name="胸部外伤" level="3" leaf="true">
             </Node>
             <Node name="腹部外伤" level="3" leaf="true" />
             <Node name="脊柱、脊髓损伤" level="3" leaf="true" />
-            <Node name="四肢外伤（骨折、肢体断离）" level="3" leaf="false">
+            <Node name="四肢外伤（骨折、肢体断离）" level="3" leaf="true">
             </Node>
             <Node name="骨盆和会阴部外伤" level="3" leaf="true" />
             <Node name="颌、面、颈部外伤" level="3" leaf="true" />
