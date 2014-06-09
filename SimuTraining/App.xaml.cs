@@ -14,6 +14,7 @@ using SimuTraining.windows;
 using SimuTraining.util;
 using System.Reflection;
 using System.Security.AccessControl;
+using System.Diagnostics;
 
 namespace SimuTraining
 {
@@ -24,6 +25,9 @@ namespace SimuTraining
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            RecoveryHelper helper = new RecoveryHelper();
+            helper.readLog();
+
             if (confirmAuthorization())
             {
                 Window index = new IndexWindow(BreadCrumb.getRoot());
@@ -34,7 +38,6 @@ namespace SimuTraining
                 Window auth = new AuthWindow();
                 auth.Show();
             }
-
 
             base.OnStartup(e);
 

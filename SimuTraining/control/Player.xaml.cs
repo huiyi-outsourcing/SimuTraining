@@ -27,6 +27,8 @@ namespace SimuTraining.windows
     /// </summary>
     public partial class Player : UserControl
     {
+        public static TraceSource logger = new TraceSource("logger");
+
         private Node current;
         private bool userIsDraggingSlider = false;
         private bool isPlaying = false;
@@ -67,6 +69,7 @@ namespace SimuTraining.windows
             }
             else
             {
+                logger.TraceInformation(current.Filelocation + " read");
                 VideoUtil.encode(current.Filelocation);
             }
 
