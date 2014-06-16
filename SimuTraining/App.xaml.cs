@@ -9,6 +9,7 @@ using System.Windows;
 using System.IO;
 using Microsoft.Win32;
 using System.Text;
+using System.Diagnostics;
 
 using SimuTraining.windows;
 using SimuTraining.util;
@@ -24,6 +25,9 @@ namespace SimuTraining
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            RecoveryHelper helper = new RecoveryHelper();
+            helper.readLog();
+
             if (confirmAuthorization())
             {
                 Window index = new IndexWindow(BreadCrumb.getRoot());

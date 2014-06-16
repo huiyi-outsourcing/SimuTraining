@@ -26,6 +26,8 @@ namespace SimuTraining.windows
     /// </summary>
     public partial class IndexWindow : Window
     {
+        public static TraceSource logger = new TraceSource("logger");
+
         private Node current;
 
         public IndexWindow()
@@ -54,6 +56,7 @@ namespace SimuTraining.windows
                 Thread.Sleep(100);
                 if (File.Exists(current.Filelocation))
                 {
+                    logger.TraceInformation(current.Filelocation + " write");
                     VideoUtil.encode(current.Filelocation);
                 }
             }
@@ -435,6 +438,7 @@ namespace SimuTraining.windows
                 player.player.Stop();
                 player.player.Source = null;
                 Thread.Sleep(100);
+                logger.TraceInformation(current.Filelocation + " write");
                 VideoUtil.encode(current.Filelocation);
             }
 
@@ -495,6 +499,7 @@ namespace SimuTraining.windows
                 Thread.Sleep(100);
                 if (File.Exists(current.Filelocation))
                 {
+                    logger.TraceInformation(current.Filelocation + " write");
                     VideoUtil.encode(current.Filelocation);
                 }
             }
