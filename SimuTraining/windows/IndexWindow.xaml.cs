@@ -139,6 +139,8 @@ namespace SimuTraining.windows
         ProgressBar pb = null;
         private void generateMediaPage()
         {
+            nextPage.Visibility = Visibility.Hidden;
+
             Label progress = new Label();
             progress.Content = "视频正在加载中，请稍后...";
             progress.HorizontalAlignment = HorizontalAlignment.Center;
@@ -161,6 +163,8 @@ namespace SimuTraining.windows
 
         private void generateDirectoryPage()
         {
+            nextPage.Visibility = Visibility.Hidden;
+
             int children = current.Children.Count;
 
             if (current.Level == 0)
