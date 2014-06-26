@@ -459,6 +459,8 @@ namespace SimuTraining.windows
 
         private void return_Click(object sender, RoutedEventArgs e)
         {
+            nextPage.Visibility = Visibility.Hidden;
+
             if (current.Parent != null)
             {
                 refreshLayout(current.Parent);
