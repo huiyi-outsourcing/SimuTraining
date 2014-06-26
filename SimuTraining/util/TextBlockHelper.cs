@@ -49,5 +49,15 @@ namespace SimuTraining.util
                 tb.Inlines.Add(new LineBreak());
             }
         }
+
+        public static void formatTitle(TextBlock tb, String description) 
+        {
+        
+        }
+
+        public static void formatContent(TextBlock tb, String description)
+        { 
+        
+        }
     }
 }

@@ -30,8 +30,12 @@ namespace SimuTraining
 
             if (confirmAuthorization())
             {
-                Window index = new IndexWindow(BreadCrumb.getRoot());
-                index.Show();
+                Window main = new MainWindow();
+                main.Show();
+                //IntroWindow intro = new IntroWindow();
+                //intro.Show();
+                //Window index = new IndexWindow(BreadCrumb.getRoot());
+                //index.Show();
             }
             else
             {

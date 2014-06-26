@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 using SimuTraining.util;
+using SimuTraining.windows;
 
 namespace SimuTraining
 {
@@ -42,9 +43,11 @@ namespace SimuTraining
 
         private void enterSimuTraining(object sender, MouseButtonEventArgs e)
         {
-            Node root = BreadCrumb.getRoot();
-            Window index = new windows.IndexWindow(root);
-            index.Show();
+            //Node root = BreadCrumb.getRoot();
+            //Window index = new windows.IndexWindow(root);
+            //index.Show();
+            Window intro = new IntroWindow();
+            intro.Show();
             this.Close();
         }
 

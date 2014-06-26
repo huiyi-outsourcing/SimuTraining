@@ -25,9 +25,8 @@
         <!-- end of static layout -->
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="res/img/main_1.png" Width="128" Height="128" Margin="100 100 100 100" MouseLeftButtonDown="enterSimuTraining"/>
-            <Image Source="res/img/main_2.png" Width="128" Height="128" Margin="100 100 100 100"/>
-            <Image Source="res/img/main_3.png" Width="128" Height="128" Margin="100 100 100 100"/>
+            <Image Source="res/img/app_video.png" Width="200" Margin="50" MouseLeftButtonDown="enterSimuTraining"/>
+            <Image Source="res/img/app_trainning.png" Width="200" Margin="50" />
         </StackPanel>
 
 

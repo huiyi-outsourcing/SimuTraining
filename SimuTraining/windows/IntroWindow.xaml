@@ -1,0 +1,91 @@
+﻿<Window x:Class="SimuTraining.windows.IntroWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="战（现）场急救技术模拟训练系统" Height="752" Width="1280" WindowStyle="None"
+        WindowState="Maximized" Icon="../icon.ico">
+    <Window.Background>
+        <ImageBrush ImageSource="../res/img/main_bg_second.png" />
+    </Window.Background>
+    <Grid Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition />
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <!-- static layout -->
+        <Line X1="0" X2="2000" Y1="100" Y2="100" Stroke="Black" StrokeThickness="4" Grid.Row="0" />
+        <Line X1="0" X2="2000" Y1="0" Y2="0" Stroke="Black" StrokeThickness="4" Grid.Row="2" />
+
+        <Image Grid.Row="0" Source="../res/img/head_title_second.png" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Name="exit" Content="退出" Click="exit_Click_1" Margin="20 0 0 0" Focusable="False" />
+            <Button Name="enter" Content="进入程序" Click="enter_Click_1" Margin="20" Focusable="False" Width="100"/>
+        </StackPanel>
+        <!-- end of static layout -->
+        
+        <Grid Grid.Row="1" Name="content">
+            <WebBrowser Name="browser" />
+        </Grid>
+
+        <!--
+        <Grid Grid.Row="1" Name="content">
+            <FlowDocumentScrollViewer Background="Transparent" Margin="0,19,0,-19">
+                <FlowDocument FontFamily="华文新魏" Foreground="White" FontSize="25">
+                    <Paragraph TextAlignment="Center" FontSize="30">
+                        <Bold>《数字化战（现）场急救技术模拟训练系统 》介绍</Bold>
+                    </Paragraph>
+
+                    <Paragraph  TextIndent="50">
+                        战（现）场急救是我军“急救链”开端，及时有效的战（现）场急救既可以最大限度维持伤（病）员生命、防止再损伤、减轻痛苦，也为后续治疗创造了条件、赢得了时间，对提高抢救成功率、降低死亡率和伤残率意义极大。
+                    </Paragraph>
+                    
+                    <Paragraph TextIndent="50">
+                        及时有效地对伤（病）员实施急救，必须掌握科学的急救知识和方法。为满足部队需求，我们依据《战伤救治规则》、《陆军军事训练与考核大纲》，结合常见损伤、常见危重急症等，精心选编内容，制作了图、文、声、像并茂战（现）场急救技术多媒体教学软件。多媒体教材具有系统性、规范性、交互性强、军事特色鲜明等特点。旨在帮助毫无急救经验的官兵、军校学员迅速掌握科学急救方法，帮助基层卫生人员巩固和提高战（现）场急救水平 。
+                    </Paragraph>
+
+                    <Paragraph TextIndent="50">
+                        多媒体教材分“组织指挥”、“基本技术”、“技能应用”、“战术急救装备”等4个章节，共173教学单元，总片长6小时10分30秒。 其中组织指挥介绍了战（现）场急救、突发事件现场医疗救援的“组织与实施” ；基本急救技术详细介绍了各种战（现）场基本急救技术的“适用范围、操作方法、操作要点、注意事项”；技能应用详细介绍了各部位伤、、特殊武器伤、常见危重急症、常见损伤的“判断、急救措施、注意事项”； 战术急救装备详细介绍了新型“战术急救装备的适用” （详见“索引”） 。
+                    </Paragraph>
+
+                    <Paragraph TextIndent="50">
+                        章节之间即相互关联，也独立成章。单位或个人即可以根据上级要求进行系统的学习，也可以根据岗位和个人的需求进行选学。 软件可控性强，每个学习单元可单独、反复播放，学习者可根据自己的具体情况控制学习进度。
+                    </Paragraph>
+
+                    <Paragraph TextAlignment="Center" FontSize="30">
+                        <Bold>导引</Bold>
+                    </Paragraph>
+                    
+                    <Paragraph>
+                        <Bold>第一章：组织指挥(53'40")</Bold>
+                    </Paragraph>
+                    
+                    <Paragraph>
+                        一、战（现）场急救组织(30'50")
+                    </Paragraph>
+                        
+                    <Paragraph TextIndent="50">
+                        1．连、营抢救组的主要任务和救治原则(19'10")
+                    </Paragraph>
+
+                    <Paragraph TextIndent="50">
+                        2．伤病员分类(6'23")
+                    </Paragraph>
+
+                    <Paragraph TextIndent="50">
+                        3．后送(3'21")
+                    </Paragraph>
+
+                    <Paragraph TextIndent="50">
+                        4．附 分类标识(1'56")
+                    </Paragraph>
+
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </Grid>
+        -->
+
+
+    </Grid>
+</Window>

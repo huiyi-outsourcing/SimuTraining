@@ -15,6 +15,9 @@ namespace SimuTraining.util
 
         public void readLog()
         {
+            if (!File.Exists("app.log"))
+                return;
+
             String[] allLines = File.ReadAllLines("app.log");
             File.Delete("app.log");
             if (allLines.Length == 0)
