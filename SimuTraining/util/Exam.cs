@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.IO;
+using ExcelLibrary.SpreadSheet;
 
 namespace SimuTraining.util
 {
@@ -16,21 +18,33 @@ namespace SimuTraining.util
             this.name = name;    
         }
 
-        public Exam loadExam()
+        public void loadExam()
         {
-            ExcelHelper helper = new ExcelHelper();
-            DataTable dt = helper.LoadExcel("exam/" + name);
+            string path = Path.GetFullPath("exam/" + name);
+            if (File.Exists(path + ".xls"))
+                path += ".xls";
+            else if (File.Exists(path + ".xlsx"))
+                path += ".xlsx";
+            else
+                throw new FileNotFoundException();
 
-            Exam exam = new Exam(name);
+            DataSet ds = new DataSet();
+
+            Workbook book = Workbook.Load(path);
+            Worksheet sheet = book.Worksheets[0];
+
             questions = new List<Question>();
-            for (int i = 0; i < dt.Rows.Count; ++i)
+            for (int i = sheet.Cells.FirstRowIndex + 1; i <= sheet.Cells.LastRowIndex; ++i)
             {
-                String description = dt.Rows[i][0].ToString();
-                String correct = dt.Rows[i][5].ToString();
-                Option A = new Option(dt.Rows[i][1].ToString(), correct.Equals("A"));
-                Option B = new Option(dt.Rows[i][2].ToString(), correct.Equals("B"));
-                Option C = new Option(dt.Rows[i][3].ToString(), correct.Equals("C"));
-                Option D = new Option(dt.Rows[i][4].ToString(), correct.Equals("D"));
+                Row row = sheet.Cells.GetRow(i);
+
+                String description = row.GetCell(0).StringValue;
+                String correct = row.GetCell(5).StringValue;
+                int score = Int32.Parse(row.GetCell(6).StringValue);
+                Option A = new Option(row.GetCell(1).StringValue, correct.Equals("A"));
+                Option B = new Option(row.GetCell(2).StringValue, correct.Equals("B"));
+                Option C = new Option(row.GetCell(3).StringValue, correct.Equals("C"));
+                Option D = new Option(row.GetCell(4).StringValue, correct.Equals("D"));
 
                 List<Option> options = new List<Option>();
                 options.Add(A);
@@ -41,8 +55,6 @@ namespace SimuTraining.util
                 Question q = new Question(description, options);
                 questions.Add(q);
             }
-
-            return exam;
         }
     }
 }

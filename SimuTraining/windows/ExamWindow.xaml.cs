@@ -33,15 +33,11 @@ namespace SimuTraining.windows
         {
             InitializeComponent();
 
-            exam = new Exam(name + ".xlsx");
+            exam = new Exam(name);
             exam.loadExam();
         }
 
         #region Layout
-        public void refreshExam()
-        { 
-        
-        }
         #endregion
 
         #region EventHandlers
@@ -51,6 +47,21 @@ namespace SimuTraining.windows
         }
 
         private void next_question(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void submit_exam(object sender, RoutedEventArgs e)
+        { 
+        
+        }
+
+        private void question_list(object sender, RoutedEventArgs e)
+        { 
+            
+        }
+
+        private void tag_Click(object sender, RoutedEventArgs e)
         {
 
         }

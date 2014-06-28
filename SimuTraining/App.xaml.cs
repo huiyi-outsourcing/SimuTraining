@@ -32,7 +32,8 @@ namespace SimuTraining
             {
                 //Window main = new MainWindow();
                 //main.Show();
-                Window exam = new ExamListWindow();
+
+                Window exam = new ExamWindow("试题格式");
                 exam.Show();
             }
             else

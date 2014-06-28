@@ -23,6 +23,14 @@ namespace SimuTraining.util
             set { options = value; }
         }
 
+        private int score;
+
+        public int Score
+        {
+            get { return score; }
+            set { score = value; }
+        }
+
         public Question(String description, List<Option> options)
         {
             this.description = description;

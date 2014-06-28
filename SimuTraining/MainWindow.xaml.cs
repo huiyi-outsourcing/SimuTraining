@@ -53,11 +53,8 @@ namespace SimuTraining
 
         private void enterExam(object sender, MouseButtonEventArgs e)
         {
-            //Window examList = new ExamListWindow();
-            //examList.Show();
-            //this.Close();
-            Window exam = new ExamWindow("试题格式");
-            exam.Show();
+            Window examList = new ExamListWindow();
+            examList.Show();
             this.Close();
         }
 

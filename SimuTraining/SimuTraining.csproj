@@ -76,13 +76,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="ExcelLibrary">
+      <HintPath>C:\Users\Francis\Desktop\ExcelLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -113,7 +114,7 @@
     <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\ConfigHolder.cs" />
     <Compile Include="util\Exam.cs" />
-    <Compile Include="util\ExcelHelper.cs" />
+    <Compile Include="util\ExamHelper.cs" />
     <Compile Include="util\Option.cs" />
     <Compile Include="util\Question.cs" />
     <Compile Include="util\RecoveryHelper.cs" />

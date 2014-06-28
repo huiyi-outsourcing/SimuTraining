@@ -27,37 +27,21 @@
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
                 <RowDefinition />
+                <RowDefinition Height="50" />
             </Grid.RowDefinitions>
-
-            <StackPanel Name="qlist" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-
-            </StackPanel>
-
-            <Grid Name="body" Grid.Row="1">
-                <StackPanel Name="questionPanel" Orientation="Vertical" Margin="80">
-                    <TextBlock Name="description" />
-                    <Grid Name="options">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                    <StackPanel Name="buttons" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Name="prevQuestion" Content="上一题" />
-                        <Button Name="nextQuestion" Content="下一题" Margin="20 0 0 0" />
-                        <Button Name="uncertain" Content="标记" Margin="20 0 0 0" />
-                    </StackPanel>
-                </StackPanel>
+            
+            <Grid Name="body">
+                
             </Grid>
-
-        </Grid>
-
-
+            
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Name="tag" Content="标记 / 取消" Click="tag_Click" Margin="0 0 10 0" />
+                <Button Name="prev" Content="上一题" Click="prev_question" Margin="0 0 10 0" />
+                <Button Name="next" Content="下一题" Click="next_question" Margin="0 0 10 0" />
+                <Button Name="submit" Content="提交试卷" Click="submit_exam" Margin="0 0 100 0" />
+            </StackPanel>
+            
+        </Grid>        
     </Grid>
 </Window>
