@@ -76,13 +76,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Awesomium.Core, Version=1.7.4.2, Culture=neutral, PublicKeyToken=e1a0d7c8071a5214, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Awesomium Technologies LLC\Awesomium SDK\1.7.4.2\wrappers\Awesomium.NET\Assemblies\Awesomium.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Awesomium.Windows.Controls, Version=1.7.4.2, Culture=neutral, PublicKeyToken=7a34e179b8b61c39, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Awesomium Technologies LLC\Awesomium SDK\1.7.4.2\wrappers\Awesomium.NET\Assemblies\Awesomium.Windows.Controls.dll</HintPath>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -117,10 +112,20 @@
     <Compile Include="util\AuthUtil.cs" />
     <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\ConfigHolder.cs" />
+    <Compile Include="util\Exam.cs" />
+    <Compile Include="util\ExcelHelper.cs" />
+    <Compile Include="util\Option.cs" />
+    <Compile Include="util\Question.cs" />
     <Compile Include="util\RecoveryHelper.cs" />
     <Compile Include="util\SettingsHolder.cs" />
     <Compile Include="util\TextBlockHelper.cs" />
     <Compile Include="util\VideoUtil.cs" />
+    <Compile Include="windows\ExamListWindow.xaml.cs">
+      <DependentUpon>ExamListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\ExamWindow.xaml.cs">
+      <DependentUpon>ExamWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\FullScreenPlayer.xaml.cs">
       <DependentUpon>FullScreenPlayer.xaml</DependentUpon>
     </Compile>
@@ -166,6 +171,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="windows\ExamListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\ExamWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\FullScreenPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -231,6 +244,9 @@
     <Resource Include="res\img\app_trainning.png" />
     <Resource Include="res\img\app_video.png" />
     <Content Include="app_intro.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="res\exam.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="res\img\basic.png">

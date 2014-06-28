@@ -26,7 +26,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Source="res/img/app_video.png" Width="200" Margin="50" MouseLeftButtonDown="enterSimuTraining"/>
-            <Image Source="res/img/app_trainning.png" Width="200" Margin="50" />
+            <Image Source="res/img/app_trainning.png" Width="200" Margin="50" MouseLeftButtonDown="enterExam" />
         </StackPanel>
 
 
