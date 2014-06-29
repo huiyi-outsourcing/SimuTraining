@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using SimuTraining.util;
+using System.Windows.Media.Effects;
 
 namespace SimuTraining.windows
 {
@@ -35,35 +36,175 @@ namespace SimuTraining.windows
 
             exam = new Exam(name);
             exam.loadExam();
+
+            initLayout();
         }
 
         #region Layout
+        private void initLayout()
+        { 
+            // init question list
+            for (int i = 0; i < exam.Questions.Count; ++i)
+            {
+                Question q = exam.Questions.ElementAt(i);
+                Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.White, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5), Width = 50, Height = 50 };
+                border.Effect = new DropShadowEffect() { Color = Colors.Black, BlurRadius = 16, ShadowDepth = 0, Opacity = 1 };
+
+                TextBlock tb = new TextBlock() { Text = (i + 1).ToString(), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+                border.Child = tb;
+                ListBoxItem item = new ListBoxItem() { Margin = new Thickness(10) };
+                item.Content = border;
+                item.Tag = q;
+
+                qlist.Items.Add(item);
+            }
+
+            qlist.SelectedIndex = 0;
+
+            // init content
+            refreshQuestion(0);
+        }
+
+        private void refreshQuestion(int index)
+        {
+            Question q = exam.Questions[index];
+            description.Text = q.Description;
+            options.Items.Clear();
+
+            for (int i = 0; i < q.Options.Count; ++i)
+            {
+                ListBoxItem item = new ListBoxItem() { Margin = new Thickness(20) };
+                TextBlock tb = new TextBlock() { Text = q.Options[i].Description, TextWrapping = TextWrapping.Wrap, Width = 300 };
+                item.Content = tb;
+
+                options.Items.Add(item);
+            }
+
+            options.SelectedIndex = q.SelectedOption;
+        }
+
+        private void drawColor()
+        {
+            foreach (ListBoxItem item in qlist.Items)
+            {
+                Border border = item.Content as Border;
+                Question q = item.Tag as Question;
+                if (q.Status == Question.STATUS.DOUBT)
+                {
+                    border.Background = Brushes.OrangeRed;
+                }
+                else
+                {
+                    if (q.SelectedOption == -1)
+                        border.Background = Brushes.Transparent;
+                    else
+                        border.Background = Brushes.Green;
+                }
+            }
+        }
         #endregion
 
         #region EventHandlers
         private void prev_question(object sender, RoutedEventArgs e)
         {
+            int index = qlist.SelectedIndex;
+            if (index == 0)
+            {
+                MessageBox.Show("已经是第一题");
+                return;
+            }
 
+            qlist.SelectedIndex = index - 1;
         }
 
         private void next_question(object sender, RoutedEventArgs e)
         {
-
+            int index = qlist.SelectedIndex;
+            if (index == qlist.Items.Count - 1)
+            {
+                MessageBox.Show("已经是最后题");
+                return;
+            }
+            qlist.SelectedIndex = index + 1;
         }
 
         private void submit_exam(object sender, RoutedEventArgs e)
-        { 
-        
+        {
+            int count = 0;
+            foreach (Question q in exam.Questions)
+            {
+                if (q.SelectedOption != -1)
+                    count++;
+            }
+
+            if (count != exam.Questions.Count)
+            {
+                if (MessageBox.Show("还有题目没有完成，确认提交？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                {
+                    showScore();
+                }
+            }
+            else
+            {
+                showScore();
+            }
         }
 
-        private void question_list(object sender, RoutedEventArgs e)
-        { 
-            
+        private void showScore()
+        {
+            body.Children.Clear();
+            body.ColumnDefinitions.Clear();
+
+            control.ExamResult result = new control.ExamResult(exam.getScore(), exam.getWrong());
+
+            body.Children.Add(result);
         }
 
         private void tag_Click(object sender, RoutedEventArgs e)
         {
+            int index = qlist.SelectedIndex;
+            ListBoxItem item = qlist.Items[index] as ListBoxItem;
+            Question q = item.Tag as Question;
+            if (q.Status == Question.STATUS.DOUBT)
+            {
+                if (options.SelectedIndex >= 0)
+                    q.Status = Question.STATUS.DONE;
+                else
+                    q.Status = Question.STATUS.EMPTY;
+            }
+            else
+            {
+                q.Status = Question.STATUS.DOUBT;
+            }
 
+            drawColor();
+        }
+
+        private void qlist_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            int index = qlist.SelectedIndex;
+            refreshQuestion(index);
+        }
+
+        private void options_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            int index = qlist.SelectedIndex;
+            ListBoxItem item = qlist.Items[index] as ListBoxItem;
+            Question q = item.Tag as Question;
+            if (q.Status == Question.STATUS.DOUBT)
+                return;
+            else
+                q.Status = Question.STATUS.DONE;
+            q.SelectedOption = options.SelectedIndex;
+
+            drawColor();
+        }
+
+        private void ScrollViewer_PreviewMouseWheel_1(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
 
         private void mainPage_Click(object sender, RoutedEventArgs e)

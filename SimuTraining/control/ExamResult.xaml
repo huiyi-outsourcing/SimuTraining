@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="SimuTraining.control.ExamResult"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d"
+        d:DesignHeight="572" d:DesignWidth="1280">
+
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="400,167,0,0" TextWrapping="Wrap" Text="本次测试成绩为：" VerticalAlignment="Top" FontSize="30"/>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="400,249,0,0" TextWrapping="Wrap" Text="错误题目：" VerticalAlignment="Top" Width="600" Name="wrong" FontSize="25"/>
+        <TextBlock HorizontalAlignment="Left" Margin="650,172,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="200" FontSize="25" Foreground="Red" Name="score"/>
+
+    </Grid>
+</UserControl>

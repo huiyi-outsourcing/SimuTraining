@@ -31,10 +31,35 @@ namespace SimuTraining.util
             set { score = value; }
         }
 
+        public enum STATUS
+        {
+            EMPTY ,
+            DONE,
+            DOUBT
+        }
+
+        private STATUS status;
+
+        public STATUS Status
+        {
+            get { return status; }
+            set { status = value; }
+        }
+
+        private int selectedOption;
+
+        public int SelectedOption
+        {
+            get { return selectedOption; }
+            set { selectedOption = value; }
+        }
+
         public Question(String description, List<Option> options)
         {
             this.description = description;
             this.options = options;
+            status = STATUS.EMPTY;
+            selectedOption = -1;
         }
     }
 }

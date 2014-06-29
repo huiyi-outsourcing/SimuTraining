@@ -6,31 +6,9 @@
     <Window.Background>
         <ImageBrush ImageSource="../res/img/main_bg_second.png" />
     </Window.Background>
+    
     <Window.Resources>
-
-        <!-- Style for an individual generic item -->
-        <!--
-        <Style TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="BorderBrush" Value="Black" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}" >
-                        <Border SnapsToDevicePixels="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}">
-                            <ContentPresenter />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#ABDBE3"   />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        -->
+        
     </Window.Resources>
     
     <Grid Name="mainGrid">
@@ -74,7 +52,7 @@
                         ScrollViewer.CanContentScroll="True">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="3" />
+                                <UniformGrid Columns="5" />
                             </ItemsPanelTemplate>
                         </ListBox.ItemsPanel>
                     </ListBox>

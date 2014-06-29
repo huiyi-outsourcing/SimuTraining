@@ -436,6 +436,14 @@ namespace SimuTraining.windows
 
         private void mainPage_Click(object sender, RoutedEventArgs e)
         {
+            if (current.Parent == null)
+            {
+                Window main = new MainWindow();
+                main.Show();
+                this.Close();
+                return;
+            }
+
             if (body.Children.OfType<Player>().Count<Player>() > 0)
             {
                 Player player = body.Children[0] as Player;

@@ -26,21 +26,54 @@
         <!-- end of static layout -->
 
         <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="50" />
-            </Grid.RowDefinitions>
-            
             <Grid Name="body">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="70*" />
+                </Grid.ColumnDefinitions>
                 
+                <Grid Grid.Column="0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden" Background="Transparent" BorderBrush="Transparent" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel_1" VerticalAlignment="Top">
+                        <ListBox IsSynchronizedWithCurrentItem="True" Name="qlist" Margin="10" SelectionMode="Single" Background="Transparent" BorderBrush="Transparent" ScrollViewer.CanContentScroll="True" SelectionChanged="qlist_SelectionChanged_1">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="5" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                        </ListBox>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Name="question" Margin="50">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <TextBlock Name="description" TextWrapping="Wrap" Width="800" />
+                            <ListBox Name="options" IsSynchronizedWithCurrentItem="True" SelectionMode="Single" Background="Transparent" BorderBrush="Transparent" SelectionChanged="options_SelectionChanged_1" Margin="0 50 0 0">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="2" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+                    
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        
+                        <Button Name="prev" Content="上一题" Click="prev_question" Margin="0 0 10 0" />
+                        <Button Name="next" Content="下一题" Click="next_question" Margin="0 0 10 0" />
+                        <Button Name="tag" Width="100" Content="标记/取消" Click="tag_Click" Margin="0 0 10 0" />
+                        <Button Name="submit" Width="100" Content="提交试卷" Click="submit_exam" Margin="0 0 70 0" />
+                    </StackPanel>
+                </Grid>
             </Grid>
+
             
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Button Name="tag" Content="标记 / 取消" Click="tag_Click" Margin="0 0 10 0" />
-                <Button Name="prev" Content="上一题" Click="prev_question" Margin="0 0 10 0" />
-                <Button Name="next" Content="下一题" Click="next_question" Margin="0 0 10 0" />
-                <Button Name="submit" Content="提交试卷" Click="submit_exam" Margin="0 0 100 0" />
-            </StackPanel>
             
         </Grid>        
     </Grid>

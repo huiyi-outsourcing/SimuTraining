@@ -33,11 +33,9 @@ namespace SimuTraining
             // do nothing.. already in main window
         }
 
-        private void return_Click(object sender, RoutedEventArgs e)
+        private void exit_Click(object sender, RoutedEventArgs e)
         {
             // return to login window
-            Window login = new windows.LoginWindow();
-            login.Show();
             this.Close();
         }
 

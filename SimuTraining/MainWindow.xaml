@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Button Name="mainPage" Click="mainPage_Click" Content="首页" Margin="20" />
-            <Button Name="return" Click="return_Click" Content="返回" />
+            <Button Name="return" Click="exit_Click" Content="退出" />
         </StackPanel>
         <!-- end of static layout -->
 

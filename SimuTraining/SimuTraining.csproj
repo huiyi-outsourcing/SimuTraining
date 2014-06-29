@@ -76,8 +76,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ExcelLibrary">
-      <HintPath>C:\Users\Francis\Desktop\ExcelLibrary.dll</HintPath>
+    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\ExcelLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -107,6 +108,9 @@
     <Compile Include="control\Block.xaml.cs">
       <DependentUpon>Block.xaml</DependentUpon>
     </Compile>
+    <Compile Include="control\ExamResult.xaml.cs">
+      <DependentUpon>ExamResult.xaml</DependentUpon>
+    </Compile>
     <Compile Include="control\LoadingAnimation.xaml.cs">
       <DependentUpon>LoadingAnimation.xaml</DependentUpon>
     </Compile>
@@ -114,7 +118,6 @@
     <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\ConfigHolder.cs" />
     <Compile Include="util\Exam.cs" />
-    <Compile Include="util\ExamHelper.cs" />
     <Compile Include="util\Option.cs" />
     <Compile Include="util\Question.cs" />
     <Compile Include="util\RecoveryHelper.cs" />
@@ -146,6 +149,10 @@
       <DependentUpon>ProgressAnimationControl.xaml</DependentUpon>
     </Compile>
     <Page Include="control\Block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="control\ExamResult.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

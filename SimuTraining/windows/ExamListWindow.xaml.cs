@@ -27,7 +27,7 @@ namespace SimuTraining.windows
             DirectoryInfo folder = new DirectoryInfo("exam");
             foreach (FileInfo file in folder.GetFiles())
             {
-                Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.Transparent, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5) };
+                Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.Transparent, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5), HorizontalAlignment = HorizontalAlignment.Center };
                 border.Effect = new DropShadowEffect() { Color = Colors.Black, BlurRadius = 16, ShadowDepth = 0, Opacity = 1 };
 
                 Image img = new Image() { Stretch = Stretch.None };
@@ -38,18 +38,18 @@ namespace SimuTraining.windows
                 bi.Freeze();
                 img.Source = bi;
 
-                TextBlock tb = new TextBlock() { Text = file.Name, Margin = new Thickness(0, 10, 0, 0), TextWrapping = TextWrapping.Wrap, TextAlignment = TextAlignment.Center};
+                TextBlock tb = new TextBlock() { Text = System.IO.Path.GetFileNameWithoutExtension(file.Name), Margin = new Thickness(0, 10, 0, 0), TextWrapping = TextWrapping.Wrap, TextAlignment = TextAlignment.Center};
                 StackPanel panel = new StackPanel() { Orientation = Orientation.Vertical, HorizontalAlignment = HorizontalAlignment.Center };
                 panel.Children.Add(img);
                 panel.Children.Add(tb);
 
                 border.Child = panel;
 
-                ListBoxItem item = new ListBoxItem() { Margin = new Thickness(50) };
+                ListBoxItem item = new ListBoxItem() { Margin = new Thickness(50, 10, 50, 10) };
                 item.Content = border;
                 item.Tag = tb;
 
-                item.Width = SystemParameters.WorkArea.Width / 4;
+                //item.Width = SystemParameters.WorkArea.Width / 4;
 
 
                 ExamListBox.Items.Add(item);
