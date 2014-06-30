@@ -6,41 +6,33 @@ using System.Text;
 using System.IO;
 using ExcelLibrary.SpreadSheet;
 
-namespace SimuTraining.util
-{
-    public class Exam
-    {
+namespace SimuTraining.util {
+    public class Exam {
         private String name;
 
-        public String Name
-        {
+        public String Name {
             get { return name; }
             set { name = value; }
         }
         private List<Question> questions;
 
-        public List<Question> Questions
-        {
+        public List<Question> Questions {
             get { return questions; }
             set { questions = value; }
         }
 
-        public Exam(String name)
-        {
-            this.name = name;    
+        public Exam(String name) {
+            this.name = name;
         }
 
-        public int getScore()
-        {
+        public int getScore() {
             int score = 0;
-            foreach (Question q in questions)
-            {
+            foreach (Question q in questions) {
                 int index = q.SelectedOption;
                 if (index == -1)
                     continue;
 
-                if (q.Options[index].Correct)
-                {
+                if (q.Options[index].Correct) {
                     score += q.Score;
                 }
             }
@@ -48,17 +40,14 @@ namespace SimuTraining.util
             return score;
         }
 
-        public String getCorrect()
-        {
+        public String getCorrect() {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < questions.Count; ++i)
-            {
+            for (int i = 0; i < questions.Count; ++i) {
                 int index = questions[i].SelectedOption;
                 if (index == -1)
                     continue;
 
-                if (questions[i].Options[index].Correct)
-                {
+                if (questions[i].Options[index].Correct) {
                     builder.Append(i + 1 + ", ");
                 }
             }
@@ -66,19 +55,15 @@ namespace SimuTraining.util
             return builder.ToString();
         }
 
-        public String getWrong()
-        {
+        public String getWrong() {
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < questions.Count; ++i)
-            {
+            for (int i = 0; i < questions.Count; ++i) {
                 int index = questions[i].SelectedOption;
-                if (index == -1)
-                {
+                if (index == -1) {
                     builder.Append(i + 1 + ", ");
                     continue;
                 }
-                if (!questions[i].Options[index].Correct)
-                {
+                if (!questions[i].Options[index].Correct) {
                     builder.Append(i + 1 + ", ");
                 }
             }
@@ -86,8 +71,7 @@ namespace SimuTraining.util
             return builder.ToString();
         }
 
-        public void loadExam()
-        {
+        public void loadExam() {
             string path = Path.GetFullPath("exam/" + name);
             if (File.Exists(path + ".xls"))
                 path += ".xls";
@@ -100,8 +84,7 @@ namespace SimuTraining.util
             Worksheet sheet = book.Worksheets[0];
 
             questions = new List<Question>();
-            for (int i = sheet.Cells.FirstRowIndex + 1; i <= sheet.Cells.LastRowIndex; ++i)
-            {
+            for (int i = sheet.Cells.FirstRowIndex + 1; i <= sheet.Cells.LastRowIndex; ++i) {
                 Row row = sheet.Cells.GetRow(i);
 
                 String description = row.GetCell(0).StringValue;

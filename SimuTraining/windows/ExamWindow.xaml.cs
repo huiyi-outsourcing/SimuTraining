@@ -16,22 +16,18 @@ using System.Windows.Shapes;
 using SimuTraining.util;
 using System.Windows.Media.Effects;
 
-namespace SimuTraining.windows
-{
+namespace SimuTraining.windows {
     /// <summary>
     /// ExamWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class ExamWindow : Window
-    {
+    public partial class ExamWindow : Window {
         private Exam exam;
 
-        public ExamWindow()
-        {
+        public ExamWindow() {
             InitializeComponent();
         }
 
-        public ExamWindow(String name)
-        {
+        public ExamWindow(String name) {
             InitializeComponent();
 
             exam = new Exam(name);
@@ -41,11 +37,9 @@ namespace SimuTraining.windows
         }
 
         #region Layout
-        private void initLayout()
-        { 
+        private void initLayout() {
             // init question list
-            for (int i = 0; i < exam.Questions.Count; ++i)
-            {
+            for (int i = 0; i < exam.Questions.Count; ++i) {
                 Question q = exam.Questions.ElementAt(i);
                 Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.White, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5), Width = 50, Height = 50 };
                 border.Effect = new DropShadowEffect() { Color = Colors.Black, BlurRadius = 16, ShadowDepth = 0, Opacity = 1 };
@@ -65,14 +59,12 @@ namespace SimuTraining.windows
             refreshQuestion(0);
         }
 
-        private void refreshQuestion(int index)
-        {
+        private void refreshQuestion(int index) {
             Question q = exam.Questions[index];
             description.Text = q.Description;
             options.Items.Clear();
 
-            for (int i = 0; i < q.Options.Count; ++i)
-            {
+            for (int i = 0; i < q.Options.Count; ++i) {
                 ListBoxItem item = new ListBoxItem() { Margin = new Thickness(20) };
                 TextBlock tb = new TextBlock() { Text = q.Options[i].Description, TextWrapping = TextWrapping.Wrap, Width = 300 };
                 item.Content = tb;
@@ -83,18 +75,13 @@ namespace SimuTraining.windows
             options.SelectedIndex = q.SelectedOption;
         }
 
-        private void drawColor()
-        {
-            foreach (ListBoxItem item in qlist.Items)
-            {
+        private void drawColor() {
+            foreach (ListBoxItem item in qlist.Items) {
                 Border border = item.Content as Border;
                 Question q = item.Tag as Question;
-                if (q.Status == Question.STATUS.DOUBT)
-                {
+                if (q.Status == Question.STATUS.DOUBT) {
                     border.Background = Brushes.OrangeRed;
-                }
-                else
-                {
+                } else {
                     if (q.SelectedOption == -1)
                         border.Background = Brushes.Transparent;
                     else
@@ -105,11 +92,9 @@ namespace SimuTraining.windows
         #endregion
 
         #region EventHandlers
-        private void prev_question(object sender, RoutedEventArgs e)
-        {
+        private void prev_question(object sender, RoutedEventArgs e) {
             int index = qlist.SelectedIndex;
-            if (index == 0)
-            {
+            if (index == 0) {
                 MessageBox.Show("已经是第一题");
                 return;
             }
@@ -117,41 +102,32 @@ namespace SimuTraining.windows
             qlist.SelectedIndex = index - 1;
         }
 
-        private void next_question(object sender, RoutedEventArgs e)
-        {
+        private void next_question(object sender, RoutedEventArgs e) {
             int index = qlist.SelectedIndex;
-            if (index == qlist.Items.Count - 1)
-            {
+            if (index == qlist.Items.Count - 1) {
                 MessageBox.Show("已经是最后题");
                 return;
             }
             qlist.SelectedIndex = index + 1;
         }
 
-        private void submit_exam(object sender, RoutedEventArgs e)
-        {
+        private void submit_exam(object sender, RoutedEventArgs e) {
             int count = 0;
-            foreach (Question q in exam.Questions)
-            {
+            foreach (Question q in exam.Questions) {
                 if (q.SelectedOption != -1)
                     count++;
             }
 
-            if (count != exam.Questions.Count)
-            {
-                if (MessageBox.Show("还有题目没有完成，确认提交？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-                {
+            if (count != exam.Questions.Count) {
+                if (MessageBox.Show("还有题目没有完成，确认提交？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                     showScore();
                 }
-            }
-            else
-            {
+            } else {
                 showScore();
             }
         }
 
-        private void showScore()
-        {
+        private void showScore() {
             body.Children.Clear();
             body.ColumnDefinitions.Clear();
 
@@ -160,34 +136,28 @@ namespace SimuTraining.windows
             body.Children.Add(result);
         }
 
-        private void tag_Click(object sender, RoutedEventArgs e)
-        {
+        private void tag_Click(object sender, RoutedEventArgs e) {
             int index = qlist.SelectedIndex;
             ListBoxItem item = qlist.Items[index] as ListBoxItem;
             Question q = item.Tag as Question;
-            if (q.Status == Question.STATUS.DOUBT)
-            {
+            if (q.Status == Question.STATUS.DOUBT) {
                 if (options.SelectedIndex >= 0)
                     q.Status = Question.STATUS.DONE;
                 else
                     q.Status = Question.STATUS.EMPTY;
-            }
-            else
-            {
+            } else {
                 q.Status = Question.STATUS.DOUBT;
             }
 
             drawColor();
         }
 
-        private void qlist_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
+        private void qlist_SelectionChanged_1(object sender, SelectionChangedEventArgs e) {
             int index = qlist.SelectedIndex;
             refreshQuestion(index);
         }
 
-        private void options_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
+        private void options_SelectionChanged_1(object sender, SelectionChangedEventArgs e) {
             int index = qlist.SelectedIndex;
             ListBoxItem item = qlist.Items[index] as ListBoxItem;
             Question q = item.Tag as Question;
@@ -200,27 +170,22 @@ namespace SimuTraining.windows
             drawColor();
         }
 
-        private void ScrollViewer_PreviewMouseWheel_1(object sender, MouseWheelEventArgs e)
-        {
+        private void ScrollViewer_PreviewMouseWheel_1(object sender, MouseWheelEventArgs e) {
             ScrollViewer scv = (ScrollViewer)sender;
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
 
-        private void mainPage_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("您确定要退出本次考试回到首页吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
+        private void mainPage_Click(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("您确定要退出本次考试回到首页吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                 Window main = new MainWindow();
                 main.Show();
                 this.Close();
             }
         }
 
-        private void exit_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("您确定要退出本程序吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
-            {
+        private void exit_Click(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("您确定要退出本程序吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                 this.Close();
             }
         }

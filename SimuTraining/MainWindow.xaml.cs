@@ -16,31 +16,25 @@ using System.Windows.Shapes;
 using SimuTraining.util;
 using SimuTraining.windows;
 
-namespace SimuTraining
-{
+namespace SimuTraining {
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window {
+        public MainWindow() {
             InitializeComponent();
         }
 
-        private void mainPage_Click(object sender, RoutedEventArgs e)
-        {
+        private void mainPage_Click(object sender, RoutedEventArgs e) {
             // do nothing.. already in main window
         }
 
-        private void exit_Click(object sender, RoutedEventArgs e)
-        {
+        private void exit_Click(object sender, RoutedEventArgs e) {
             // return to login window
             this.Close();
         }
 
-        private void enterSimuTraining(object sender, MouseButtonEventArgs e)
-        {
+        private void enterSimuTraining(object sender, MouseButtonEventArgs e) {
             //Node root = BreadCrumb.getRoot();
             //Window index = new windows.IndexWindow(root);
             //index.Show();
@@ -49,8 +43,7 @@ namespace SimuTraining
             this.Close();
         }
 
-        private void enterExam(object sender, MouseButtonEventArgs e)
-        {
+        private void enterExam(object sender, MouseButtonEventArgs e) {
             Window examList = new ExamListWindow();
             examList.Show();
             this.Close();
