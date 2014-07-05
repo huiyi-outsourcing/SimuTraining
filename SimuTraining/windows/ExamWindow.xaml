@@ -20,16 +20,17 @@
         <Image Grid.Row="0" Source="../res/img/head_title_second.png" />
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button Name="mainPage" Content="首页" Margin="20" Click="mainPage_Click" Focusable="False" />
-            <Button Name="exit" Content="退出" Margin="20" Click="exit_Click" Focusable="False" />
+            <Button Name="mainPage" Content="首页" Margin="10" Click="mainPage_Click" Focusable="False" />
+            <Button Name="return" Content="返回" Margin="10" Click="return_Click" Focusable="False" />
+            <Button Name="exit" Content="退出" Margin="10" Click="exit_Click" Focusable="False" />
         </StackPanel>
         <!-- end of static layout -->
 
         <Grid Grid.Row="1">
             <Grid Name="body">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="30*" />
-                    <ColumnDefinition Width="70*" />
+                    <ColumnDefinition Width="25*" />
+                    <ColumnDefinition Width="75*" />
                 </Grid.ColumnDefinitions>
                 
                 <Grid Grid.Column="0">
@@ -52,7 +53,7 @@
 
                     <Grid Grid.Row="0" Name="question" Margin="50">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                            <TextBlock Name="description" TextWrapping="Wrap" Width="800" />
+                            <TextBlock Name="description" TextWrapping="Wrap" Width="800" FontSize="30" />
                             <ListBox Name="options" IsSynchronizedWithCurrentItem="True" SelectionMode="Single" Background="Transparent" BorderBrush="Transparent" SelectionChanged="options_SelectionChanged_1" Margin="0 50 0 0">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>

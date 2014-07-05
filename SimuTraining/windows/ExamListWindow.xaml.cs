@@ -25,6 +25,7 @@ namespace SimuTraining.windows
             InitializeComponent();
 
             DirectoryInfo folder = new DirectoryInfo("exam");
+
             foreach (FileInfo file in folder.GetFiles())
             {
                 Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.Transparent, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5), HorizontalAlignment = HorizontalAlignment.Center };

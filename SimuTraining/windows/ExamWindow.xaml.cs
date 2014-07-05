@@ -41,7 +41,7 @@ namespace SimuTraining.windows {
             // init question list
             for (int i = 0; i < exam.Questions.Count; ++i) {
                 Question q = exam.Questions.ElementAt(i);
-                Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.White, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5), Width = 50, Height = 50 };
+                Border border = new Border() { SnapsToDevicePixels = true, BorderBrush = Brushes.LightGray, BorderThickness = new Thickness(4), CornerRadius = new CornerRadius(5), Width = 40, Height = 40 };
                 border.Effect = new DropShadowEffect() { Color = Colors.Black, BlurRadius = 16, ShadowDepth = 0, Opacity = 1 };
 
                 TextBlock tb = new TextBlock() { Text = (i + 1).ToString(), HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
@@ -73,6 +73,8 @@ namespace SimuTraining.windows {
             }
 
             options.SelectedIndex = q.SelectedOption;
+            if (options.SelectedIndex != -1)
+                (options.SelectedItem as ListBoxItem).Focus();
         }
 
         private void drawColor() {
@@ -161,11 +163,11 @@ namespace SimuTraining.windows {
             int index = qlist.SelectedIndex;
             ListBoxItem item = qlist.Items[index] as ListBoxItem;
             Question q = item.Tag as Question;
-            if (q.Status == Question.STATUS.DOUBT)
-                return;
-            else
+            if (q.Status == Question.STATUS.EMPTY)
                 q.Status = Question.STATUS.DONE;
-            q.SelectedOption = options.SelectedIndex;
+                
+            if (options.SelectedIndex != -1)
+                q.SelectedOption = options.SelectedIndex;
 
             drawColor();
         }
@@ -180,6 +182,14 @@ namespace SimuTraining.windows {
             if (MessageBox.Show("您确定要退出本次考试回到首页吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                 Window main = new MainWindow();
                 main.Show();
+                this.Close();
+            }
+        }
+
+        private void return_Click(object sender, RoutedEventArgs e) {
+            if (MessageBox.Show("您确定要退出本次考试回到试题选择吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                Window examList = new ExamListWindow();
+                examList.Show();
                 this.Close();
             }
         }

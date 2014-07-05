@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using SimuTraining.util;
 using SimuTraining.windows;
+using System.IO;
 
 namespace SimuTraining {
     /// <summary>
@@ -44,6 +45,12 @@ namespace SimuTraining {
         }
 
         private void enterExam(object sender, MouseButtonEventArgs e) {
+            DirectoryInfo folder = new DirectoryInfo("exam");
+            if (!folder.Exists || folder.GetFiles().Length == 0) {
+                MessageBox.Show("当前没有考试题目");
+                return;
+            }
+
             Window examList = new ExamListWindow();
             examList.Show();
             this.Close();
