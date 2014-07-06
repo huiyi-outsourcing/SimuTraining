@@ -10,7 +10,7 @@
     <Window.Resources>
         <ControlTemplate x:Key="ListBoxControlTemplate" TargetType="ListBoxItem">
             <RadioButton IsChecked="{Binding Path=IsSelected,
-            RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Width="300" >
+            RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}" Width="300">
                 <ContentPresenter></ContentPresenter>
             </RadioButton>
         </ControlTemplate>

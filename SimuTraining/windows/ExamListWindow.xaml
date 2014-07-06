@@ -48,7 +48,6 @@
                         SelectionMode="Single"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        SelectionChanged="ExamListBox_SelectionChanged_1"
                         ScrollViewer.CanContentScroll="True">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>

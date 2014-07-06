@@ -54,6 +54,8 @@ namespace SimuTraining.windows
                 item.Content = border;
                 item.Tag = tb;
 
+                item.PreviewMouseLeftButtonDown += new MouseButtonEventHandler(onExamClick);
+
                 //item.Width = SystemParameters.WorkArea.Width / 4;
 
                 ExamListBox.Items.Add(item);
@@ -77,8 +79,17 @@ namespace SimuTraining.windows
 
         private void onExamClick(object sender, MouseButtonEventArgs e)
         {
-            ListBoxItem item = ExamListBox.SelectedItem as ListBoxItem;
+            ListBoxItem item = (sender as ListBoxItem);
+            //ListBoxItem item = ExamListBox.SelectedItem as ListBoxItem;
             String name = (item.Tag as TextBlock).Text;
+
+            try {
+                String fullpath = System.IO.Path.GetFullPath("exam/" + name + ".xls");
+                File.Move(fullpath, fullpath);
+            } catch (Exception) {
+                MessageBox.Show("文件正被其他程序占用，请关闭占用程序后打开");
+                return;
+            }
 
             Window exam = new ExamWindow(name);
             exam.Show();
@@ -96,6 +107,14 @@ namespace SimuTraining.windows
             ListBoxItem item = ExamListBox.SelectedItem as ListBoxItem;
             String name = (item.Tag as TextBlock).Text;
 
+            try {
+                String fullpath = System.IO.Path.GetFullPath("exam/" + name + ".xls");
+                File.Move(fullpath, fullpath);
+            } catch (Exception) {
+                MessageBox.Show("文件正被其他程序占用，请关闭占用程序后打开");
+                return;
+            }
+
             Window exam = new ExamWindow(name);
             exam.Show();
             this.Close();
@@ -106,6 +125,11 @@ namespace SimuTraining.windows
                 if (MessageBox.Show("您确定要退出本次考试回到试题选择吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                     Window examList = new ExamListWindow();
                     examList.Show();
+                    this.Close();
+                }
+            }
+            if (e.Key == Key.Escape) {
+                if (MessageBox.Show("您确定要退出本程序吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                     this.Close();
                 }
             }

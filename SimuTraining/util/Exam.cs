@@ -101,7 +101,7 @@ namespace SimuTraining.util {
                 options.Add(C);
                 options.Add(D);
 
-                Question q = new Question(description, options);
+                Question q = new Question(description, options, score);
                 questions.Add(q);
             }
         }

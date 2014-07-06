@@ -205,10 +205,15 @@ namespace SimuTraining.windows {
         #endregion
 
         private void Window_KeyDown_1(object sender, KeyEventArgs e) {
-            if (e.Key == Key.Escape) {
+            if (e.Key == Key.Back) {
                 if (MessageBox.Show("您确定要退出本次考试回到试题选择吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                     Window examList = new ExamListWindow();
                     examList.Show();
+                    this.Close();
+                }
+            }
+            if (e.Key == Key.Escape) {
+                if (MessageBox.Show("您确定要退出本程序吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
                     this.Close();
                 }
             }

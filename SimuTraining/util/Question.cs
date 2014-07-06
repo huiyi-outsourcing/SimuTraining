@@ -46,9 +46,10 @@ namespace SimuTraining.util {
             set { selectedOption = value; }
         }
 
-        public Question(String description, List<Option> options) {
+        public Question(String description, List<Option> options, int score) {
             this.description = description;
             this.options = options;
+            this.score = score;
             status = STATUS.EMPTY;
             selectedOption = -1;
         }
