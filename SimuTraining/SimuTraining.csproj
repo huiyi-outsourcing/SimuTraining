@@ -255,14 +255,12 @@
     <Content Include="app_intro.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="res\check.png">
+    <Content Include="res\check2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="res\check2.png" />
     <Content Include="res\exam.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="res\images.png" />
     <Content Include="res\img\basic.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
