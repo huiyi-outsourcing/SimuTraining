@@ -118,6 +118,7 @@
     <Compile Include="util\BreadCrumb.cs" />
     <Compile Include="util\ConfigHolder.cs" />
     <Compile Include="util\Exam.cs" />
+    <Compile Include="util\FileSortHelper.cs" />
     <Compile Include="util\Option.cs" />
     <Compile Include="util\Question.cs" />
     <Compile Include="util\RecoveryHelper.cs" />

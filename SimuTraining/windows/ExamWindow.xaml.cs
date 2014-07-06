@@ -61,13 +61,15 @@ namespace SimuTraining.windows {
 
         private void refreshQuestion(int index) {
             Question q = exam.Questions[index];
-            description.Text = q.Description;
+            description.Text = index + 1 + ". " + q.Description;
             options.Items.Clear();
 
             for (int i = 0; i < q.Options.Count; ++i) {
-                ListBoxItem item = new ListBoxItem() { Margin = new Thickness(20) };
-                TextBlock tb = new TextBlock() { Text = q.Options[i].Description, TextWrapping = TextWrapping.Wrap, Width = 300 };
+                ListBoxItem item = new ListBoxItem() { Margin = new Thickness(10)};
+                TextBlock tb = new TextBlock() { Text = q.Options[i].Description, TextWrapping = TextWrapping.Wrap };
+
                 item.Content = tb;
+                item.MouseDoubleClick += new MouseButtonEventHandler(next_question);
 
                 options.Items.Add(item);
             }
@@ -107,8 +109,9 @@ namespace SimuTraining.windows {
         private void next_question(object sender, RoutedEventArgs e) {
             int index = qlist.SelectedIndex;
             if (index == qlist.Items.Count - 1) {
-                MessageBox.Show("已经是最后题");
-                return;
+                if (MessageBox.Show("已到最后一题，是否提交试卷？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                    showScore();
+                }
             }
             qlist.SelectedIndex = index + 1;
         }
@@ -200,5 +203,15 @@ namespace SimuTraining.windows {
             }
         }
         #endregion
+
+        private void Window_KeyDown_1(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Escape) {
+                if (MessageBox.Show("您确定要退出本次考试回到试题选择吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                    Window examList = new ExamListWindow();
+                    examList.Show();
+                    this.Close();
+                }
+            }
+        }
     }
 }

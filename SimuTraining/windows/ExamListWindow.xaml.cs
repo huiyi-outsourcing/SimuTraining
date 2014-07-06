@@ -13,6 +13,8 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using SimuTraining.util;
+
 namespace SimuTraining.windows
 {
     /// <summary>
@@ -25,6 +27,8 @@ namespace SimuTraining.windows
             InitializeComponent();
 
             DirectoryInfo folder = new DirectoryInfo("exam");
+            //FileInfo[] files = folder.GetFiles();
+            //Array.Sort(files, new FileSortHelper(SortOption.FileName));
 
             foreach (FileInfo file in folder.GetFiles())
             {
@@ -52,11 +56,8 @@ namespace SimuTraining.windows
 
                 //item.Width = SystemParameters.WorkArea.Width / 4;
 
-
                 ExamListBox.Items.Add(item);
             }
-
-            ExamListBox.SelectedIndex = 0;
         }
 
         private void mainPage_Click(object sender, RoutedEventArgs e)
@@ -90,5 +91,25 @@ namespace SimuTraining.windows
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
+        private void ExamListBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e) {
+            ListBoxItem item = ExamListBox.SelectedItem as ListBoxItem;
+            String name = (item.Tag as TextBlock).Text;
+
+            Window exam = new ExamWindow(name);
+            exam.Show();
+            this.Close();
+        }
+
+        private void Window_KeyDown_1(object sender, KeyEventArgs e) {
+            if (e.Key == Key.Escape) {
+                if (MessageBox.Show("您确定要退出本次考试回到试题选择吗？", "提醒", MessageBoxButton.OKCancel) == MessageBoxResult.OK) {
+                    Window examList = new ExamListWindow();
+                    examList.Show();
+                    this.Close();
+                }
+            }
+        }
+
     }
 }
