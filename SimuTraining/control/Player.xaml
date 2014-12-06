@@ -12,34 +12,30 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Orientation="Vertical" Name="playerPanel">
-            <Border Name="background">
-                <Border.Background>
-                    <ImageBrush ImageSource="../res/img/bg_video_end.png" />
-                </Border.Background>
-                <Grid MouseEnter="Grid_MouseEnter_1" MouseLeave="Grid_MouseLeave_1">
-                    <MediaElement Name="player" LoadedBehavior="Manual"  MediaEnded="player_MediaEnded" Stretch="Fill" ScrubbingEnabled="True"/>
-                    <StatusBar VerticalAlignment="Bottom" Name="bar" Visibility="Hidden">
-                        <StatusBar.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                </Grid>
-                            </ItemsPanelTemplate>
-                        </StatusBar.ItemsPanel>
-                        <StatusBarItem>
-                            <TextBlock Name="lblProgressStatus" Foreground="Green">00:00:00</TextBlock>
-                        </StatusBarItem>
-                        <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
-                            <Slider Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
-                        </StatusBarItem>
-                    </StatusBar>
-                </Grid>
-            </Border>
-            
+
+            <Grid MouseEnter="Grid_MouseEnter_1" MouseLeave="Grid_MouseLeave_1">
+                <MediaElement Name="player" LoadedBehavior="Manual"  MediaEnded="player_MediaEnded" Stretch="Fill" ScrubbingEnabled="True"/>
+                <StatusBar VerticalAlignment="Bottom" Name="bar" Visibility="Hidden">
+                    <StatusBar.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </StatusBar.ItemsPanel>
+                    <StatusBarItem>
+                        <TextBlock Name="lblProgressStatus" Foreground="Green">00:00:00</TextBlock>
+                    </StatusBarItem>
+                    <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
+                        <Slider Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
+                    </StatusBarItem>
+                </StatusBar>
+            </Grid>
+
             <StackPanel Orientation="Horizontal">
                 <Button Name="play" Content="播放" Click="play_Click_1" Margin="0 0 10 0" />
                 <Button Name="fullscreen" Content="全屏" Click="fullscreen_Click_1" Margin="0 0 10 0" />

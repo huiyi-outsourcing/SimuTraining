@@ -70,7 +70,7 @@ namespace SimuTraining.windows
             else
             {
                 logger.TraceInformation(current.Filelocation + " read");
-                VideoUtil.encode(current.Filelocation);
+                //VideoUtil.encode(current.Filelocation);
             }
 
             this.current = current;
@@ -129,7 +129,7 @@ namespace SimuTraining.windows
         private void stop_Click_1(object sender, RoutedEventArgs e)
         {
             player.Stop();
-            player.Source = null;
+            //player.Source = null;
             isPlaying = false;
         }
 

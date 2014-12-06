@@ -17,6 +17,10 @@
         <Line X1="0" X2="2000" Y1="0" Y2="0" Stroke="Black" StrokeThickness="4" Grid.Row="2" />
 
         <Image Grid.Row="0" Source="res/img/head_title_second.png" />
+        
+        <Grid Name="body">
+            
+        </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Button Name="mainPage" Click="mainPage_Click" Content="首页" Margin="20" />

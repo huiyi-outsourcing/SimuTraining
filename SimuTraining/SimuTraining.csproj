@@ -255,9 +255,6 @@
     <Content Include="app_intro.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="res\check2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="res\exam.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -723,6 +720,7 @@
     <Content Include="res\img\bg_video_end.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="res\img\check.png" />
     <Content Include="res\img\comp.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
